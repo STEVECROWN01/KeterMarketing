@@ -11,8 +11,7 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import ProcessSection from '@/components/sections/ProcessSection'
 import PortfolioSection from '@/components/sections/PortfolioSection'
 import AboutSection from '@/components/sections/AboutSection'
-import TeamSection from '@/components/sections/TeamSection'
-import LeadMagnetSection from '@/components/sections/LeadMagnetSection'
+import ContactFormSection from '@/components/sections/ContactFormSection'
 import FAQSection from '@/components/sections/FAQSection'
 import CTASection from '@/components/sections/CTASection'
 
@@ -29,8 +28,7 @@ export default function Home() {
         <ProcessSection />
         <PortfolioSection />
         <AboutSection />
-        <TeamSection />
-        <LeadMagnetSection />
+        <ContactFormSection />
         <FAQSection />
         <CTASection />
       </main>
