@@ -54,9 +54,9 @@ export default function HeroSection() {
     <ImageCarouselHero
       title={
         <>
-          <span className="text-white/70 font-normal">Des Sites Web Qui Génèrent de</span>
+          <span className="text-white/80 font-normal">Nous créons des sites web qui</span>
           <br />
-          <span className="text-[#D4AF37]">Vrais Clients</span>
+          <span className="text-[#D4AF37] font-semibold">Génèrent des Ventes</span>
         </>
       }
       subtitle="Keter Marketing"
@@ -78,16 +78,18 @@ export default function HeroSection() {
       images={heroImages}
       features={heroFeatures}
       ratingBadge={
-        <span className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm">
-          <span className="flex gap-0.5">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-[#D4AF37] text-[#D4AF37]" />
-            ))}
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
+            <span className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-[#D4AF37] text-[#D4AF37]" />
+              ))}
+            </span>
+            <span className="font-semibold text-white text-xs">5.0</span>
           </span>
-          <span className="font-semibold text-white text-sm">5.0</span>
-          <span className="text-white/40 text-sm">—</span>
-          <span className="text-white/60 text-sm">Plus de 20 clients satisfaits</span>
-        </span>
+          <span className="text-white/40 text-xs">—</span>
+          <span className="text-white/60 text-xs font-mono">Basé sur plus de 20 clients satisfaits</span>
+        </div>
       }
       microCopy="Appel découverte gratuit · 30 minutes · Sans engagement"
     />

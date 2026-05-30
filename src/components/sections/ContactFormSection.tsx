@@ -14,6 +14,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { ArrowRight, CheckCircle2, Loader2, MapPin, Mail, Phone } from 'lucide-react'
+import { WHATSAPP_BOOKING_URL, WHATSAPP_CONTACT_URL } from '@/lib/constants'
 
 interface FormData {
   fullName: string
@@ -88,7 +89,7 @@ export default function ContactFormSection() {
               {/* Contact Info Cards */}
               <div className="space-y-4 mb-10">
                 <a
-                  href="https://wa.me/2290141360803"
+                  href={WHATSAPP_CONTACT_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group"
@@ -132,7 +133,7 @@ export default function ContactFormSection() {
 
               {/* Quick CTA */}
               <a
-                href="https://wa.me/2290141360803?text=Bonjour%20Keter%20Marketing%2C%0AJe%20souhaite%20r%C3%A9server%20un%20appel%20d%C3%A9couverte%20gratuit%20de%2030%20minutes."
+                href={WHATSAPP_BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[#D4AF37] font-medium hover:gap-3 transition-all text-sm"
