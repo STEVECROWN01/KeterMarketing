@@ -79,9 +79,16 @@ export function ImageCarouselHero({
       </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 pt-20">
+        {/* Rating badge — above carousel */}
+        {ratingBadge && (
+          <div className="mb-6">
+            {ratingBadge}
+          </div>
+        )}
+
         {/* Carousel Container */}
         <div
-          className="relative w-full max-w-6xl h-64 sm:h-80 md:h-[420px] lg:h-[480px] mb-8 sm:mb-12"
+          className="relative w-full max-w-6xl h-72 sm:h-96 md:h-[500px] lg:h-[560px] mb-8 sm:mb-12"
           onMouseMove={handleMouseMove}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
@@ -90,7 +97,7 @@ export function ImageCarouselHero({
           <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: "1000px" }}>
             {images.map((image, index) => {
               const angle = (rotatingCards[index] || 0) * (Math.PI / 180)
-              const radius = 200
+              const radius = 260
               const x = Math.cos(angle) * radius
               const y = Math.sin(angle) * radius * 0.4 // Flatten for horizontal ellipse
 
@@ -100,8 +107,8 @@ export function ImageCarouselHero({
 
               // Depth-based scale & opacity for parallax
               const depth = Math.sin(angle)
-              const scale = 0.65 + (depth + 1) * 0.2 // 0.65 to 1.05
-              const opacity = 0.4 + (depth + 1) * 0.3 // 0.4 to 1.0
+              const scale = 0.75 + (depth + 1) * 0.15 // 0.75 to 1.05
+              const opacity = 0.5 + (depth + 1) * 0.25 // 0.5 to 1.0
               const zIndex = Math.round((depth + 1) * 10)
 
               return (
@@ -119,14 +126,14 @@ export function ImageCarouselHero({
                     transformStyle: "preserve-3d",
                     zIndex: zIndex,
                     opacity: opacity,
-                    width: "clamp(140px, 22vw, 280px)",
-                    height: "clamp(100px, 15vw, 190px)",
+                    width: "clamp(200px, 28vw, 380px)",
+                    height: "clamp(130px, 18vw, 250px)",
                   }}
                 >
                   <div
                     className={cn(
                       "relative w-full h-full rounded-2xl overflow-hidden",
-                      "transition-all duration-300 hover:scale-110",
+                      "transition-all duration-300 hover:scale-105",
                       "cursor-pointer group",
                       "border border-white/10",
                       "shadow-[0_0_30px_rgba(212,175,55,0.15)]",
@@ -139,9 +146,10 @@ export function ImageCarouselHero({
                       src={image.src}
                       alt={image.alt}
                       fill
-                      className="object-cover object-top group-hover:scale-110 transition-transform duration-500"
+                      className="object-cover object-top"
+                      quality={95}
                       priority={index < 2}
-                      sizes="(max-width: 640px) 140px, (max-width: 1024px) 200px, 280px"
+                      sizes="(max-width: 640px) 400px, (max-width: 1024px) 560px, 760px"
                     />
                     {/* Gold shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -153,13 +161,6 @@ export function ImageCarouselHero({
             })}
           </div>
         </div>
-
-        {/* Rating badge */}
-        {ratingBadge && (
-          <div className="mb-6">
-            {ratingBadge}
-          </div>
-        )}
 
         {/* Content Section */}
         <div className="relative z-20 text-center max-w-2xl mx-auto mb-8 sm:mb-10">
