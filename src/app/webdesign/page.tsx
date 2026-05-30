@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import ProcessSection from '@/components/sections/ProcessSection'
 import AnimatedSection from '@/components/sections/AnimatedSection'
+import ServicePageBottom from '@/components/sections/ServicePageBottom'
 import Link from 'next/link'
 import { ArrowRight, Sparkles } from 'lucide-react'
 
@@ -43,6 +44,7 @@ export default function WebDesignPage() {
 
         {/* Process Steps Section */}
         <ProcessSection />
+        <ServicePageBottom />
       </main>
       <Footer />
       <WhatsAppFAB />

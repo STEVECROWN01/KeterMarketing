@@ -4,8 +4,9 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
+import ServicePageBottom from '@/components/sections/ServicePageBottom'
 import Link from 'next/link'
-import { ArrowRight, Search, BarChart3, Target, Award } from 'lucide-react'
+import { ArrowRight, Search, BarChart3, Target, Award, TrendingUp } from 'lucide-react'
 
 export default function SearchEngineMarketingPage() {
   return (
@@ -86,6 +87,49 @@ export default function SearchEngineMarketingPage() {
             </div>
           </div>
         </section>
+
+        {/* ── Résultats clients ── */}
+        <section className="py-16 md:py-20 border-t border-white/5 bg-[#0B0B0B]">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection className="mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Comment nous avons aidé Win Agro Tech</h2>
+              <p className="text-white/40 text-sm">Une refonte web + stratégie SEO locale en moins de 4 semaines.</p>
+            </AnimatedSection>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { value: '3 semaines', label: 'Pour refondre le site' },
+                { value: '+180%', label: 'De trafic organique' },
+                { value: 'Top 3', label: 'Sur Google pour 5 mots-clés cibles' },
+                { value: '5 étoiles', label: 'Avis clients vérifiés' },
+              ].map((stat, i) => (
+                <AnimatedSection key={i}>
+                  <div className="p-5 rounded-xl border border-white/8 bg-white/[0.02] text-center hover:border-[#D4AF37]/20 transition-colors">
+                    <p className="text-2xl md:text-3xl font-bold text-[#D4AF37] mb-1">{stat.value}</p>
+                    <p className="text-white/40 text-xs leading-snug">{stat.label}</p>
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+            <AnimatedSection className="mt-6 flex gap-4">
+              <Link
+                href="/our-work"
+                className="inline-flex items-center gap-2 text-white/50 text-sm hover:text-[#D4AF37] transition-colors group"
+              >
+                Plus d&apos;études de cas
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+              <Link
+                href="/our-work/win-agro-tech"
+                className="inline-flex items-center gap-2 text-[#D4AF37] text-sm font-semibold hover:underline group"
+              >
+                Étude de cas complète
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+            </AnimatedSection>
+          </div>
+        </section>
+
+        <ServicePageBottom />
       </main>
       <Footer />
       <WhatsAppFAB />
