@@ -1,110 +1,140 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Menu } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Sheet, SheetTrigger, SheetContent, SheetClose } from '@/components/ui/sheet'
+import React from 'react';
+import Image from 'next/image';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
+import { useScroll } from '@/components/ui/use-scroll';
 
 const navLinks = [
-  { label: 'Notre Process', href: '#process' },
-  { label: 'Nos Services', href: '#services' },
+  { label: 'Services', href: '#services' },
   { label: 'Portfolio', href: '#portfolio' },
+  { label: 'Process', href: '#process' },
   { label: 'À Propos', href: '#about' },
-]
+  { label: 'FAQ', href: '#faq' },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = React.useState(false);
+  const scrolled = useScroll(10);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+  React.useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-[#0B0B0B]/95 backdrop-blur-md shadow-[0_1px_20px_rgba(0,0,0,0.3)]'
-          : 'bg-[#0B0B0B]'
-      }`}
+      className={cn(
+        'sticky top-0 z-50 mx-auto w-full max-w-5xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out',
+        {
+          'bg-[#0B0B0B]/95 backdrop-blur-lg border-white/10 md:top-4 md:max-w-4xl md:shadow-[0_0_30px_rgba(0,0,0,0.4)]':
+            scrolled && !open,
+          'bg-[#0B0B0B]/90': open,
+        },
+      )}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-[72px]">
-        {/* Logo LEFT */}
-        <Link href="#hero" className="flex items-center shrink-0">
+      <nav
+        className={cn(
+          'flex h-16 w-full items-center justify-between px-4 md:h-14 md:transition-all md:ease-out',
+          {
+            'md:px-2': scrolled,
+          },
+        )}
+      >
+        {/* Logo */}
+        <a href="#hero" className="flex items-center shrink-0">
           <Image
             src="/keter-logo.png"
             alt="Keter Marketing"
-            width={130}
-            height={38}
-            className="h-8 md:h-9 w-auto"
+            width={120}
+            height={36}
+            className="h-7 md:h-8 w-auto"
             priority
           />
-        </Link>
+        </a>
 
-        {/* Nav links CENTER */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
+        {/* Desktop nav links + CTA */}
+        <div className="hidden items-center gap-1 md:flex">
+          {navLinks.map((link, i) => (
+            <a
+              key={i}
+              className={buttonVariants({
+                variant: 'ghost',
+                className: 'text-white/60 hover:text-white hover:bg-white/5 text-[13px] font-medium',
+              })}
               href={link.href}
-              className="text-sm font-medium text-white/60 hover:text-white transition-colors duration-200"
             >
               {link.label}
-            </Link>
+            </a>
           ))}
+          <Button
+            asChild
+            className="ml-2 bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] font-semibold text-[12px] uppercase tracking-[0.08em] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300"
+          >
+            <a href="#cta-final">Démarrer mon projet</a>
+          </Button>
         </div>
 
-        {/* CTA RIGHT */}
-        <div className="hidden md:block">
-          <Link href="#cta-final">
-            <Button className="bg-white hover:bg-[#D4AF37] text-[#0B0B0B] hover:text-[#0B0B0B] rounded-md px-6 py-2.5 text-[13px] font-semibold uppercase tracking-[0.08em] transition-all duration-300 h-auto">
-              Démarrer mon projet
-            </Button>
-          </Link>
-        </div>
-
-        {/* Mobile Hamburger */}
-        <div className="md:hidden">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-white">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-[#0B0B0B] border-white/10 p-0">
-              <div className="flex flex-col h-full pt-20">
-                <div className="flex flex-col gap-0.5 px-6">
-                  {navLinks.map((link) => (
-                    <SheetClose key={link.href} asChild>
-                      <Link
-                        href={link.href}
-                        className="px-3 py-3.5 text-base font-medium text-white/70 hover:text-[#D4AF37] hover:bg-white/5 rounded-lg transition-colors duration-200"
-                      >
-                        {link.label}
-                      </Link>
-                    </SheetClose>
-                  ))}
-                </div>
-                <div className="mt-auto px-6 pb-8">
-                  <SheetClose asChild>
-                    <Link href="#cta-final" className="block">
-                      <Button className="w-full bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] rounded-md py-3.5 text-[14px] font-semibold uppercase tracking-[0.08em] transition-all duration-300 h-auto">
-                        Démarrer mon projet
-                      </Button>
-                    </Link>
-                  </SheetClose>
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
+        {/* Mobile toggle */}
+        <Button
+          size="icon"
+          variant="outline"
+          onClick={() => setOpen(!open)}
+          className="md:hidden border-white/15 text-white hover:bg-white/5 hover:border-white/30"
+        >
+          <MenuToggleIcon open={open} className="size-5" duration={300} />
+        </Button>
       </nav>
+
+      {/* Mobile menu overlay */}
+      <div
+        className={cn(
+          'bg-[#0B0B0B]/95 backdrop-blur-lg fixed top-16 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y border-white/10 md:hidden',
+          open ? 'block' : 'hidden',
+        )}
+      >
+        <div
+          data-slot={open ? 'open' : 'closed'}
+          className={cn(
+            'data-[slot=open]:animate-in data-[slot=open]:zoom-in-95 data-[slot=closed]:animate-out data-[slot=closed]:zoom-out-95 ease-out',
+            'flex h-full w-full flex-col justify-between gap-y-2 p-5',
+          )}
+        >
+          <div className="grid gap-y-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                className={buttonVariants({
+                  variant: 'ghost',
+                  className: 'justify-start text-white/70 hover:text-[#D4AF37] hover:bg-white/5 text-[15px] font-medium',
+                })}
+                href={link.href}
+                onClick={() => setOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div className="flex flex-col gap-3">
+            <Button
+              asChild
+              className="w-full bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] font-semibold text-[13px] uppercase tracking-[0.08em] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300"
+            >
+              <a href="#cta-final" onClick={() => setOpen(false)}>
+                Démarrer mon projet
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
     </header>
-  )
+  );
 }
