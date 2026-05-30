@@ -1,23 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 
-const serviceLinks = [
-  { label: 'Création de site web', href: '#services' },
-  { label: 'Landing page', href: '#services' },
-  { label: 'Refonte de site', href: '#services' },
-  { label: 'Copywriting', href: '#services' },
-]
-
-const companyLinks = [
-  { label: 'Notre Process', href: '#process' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'À Propos', href: '#about' },
-  { label: 'FAQ', href: '#faq' },
-]
-
-/* ── Official brand SVG icons (modern 2024 versions) ── */
+/* ── Official brand SVG icons ── */
 
 function InstagramIcon({ className = '' }: { className?: string }) {
   return (
@@ -51,118 +36,146 @@ function WhatsAppIcon({ className = '' }: { className?: string }) {
   )
 }
 
+/* ── Data ── */
+
+const services = [
+  { title: 'Création de site web', href: '#services' },
+  { title: 'Landing page', href: '#services' },
+  { title: 'Refonte de site', href: '#services' },
+  { title: 'Copywriting', href: '#services' },
+]
+
+const company = [
+  { title: 'Notre Process', href: '#process' },
+  { title: 'Portfolio', href: '#portfolio' },
+  { title: 'À Propos', href: '#about' },
+  { title: 'FAQ', href: '#faq' },
+  { title: 'Contact', href: '#cta-final' },
+]
+
+const socialLinks = [
+  {
+    icon: <InstagramIcon className="size-4" />,
+    link: 'https://www.instagram.com/',
+    label: 'Instagram',
+    hoverColor: 'hover:text-[#E4405F] hover:border-[#E4405F]/40',
+  },
+  {
+    icon: <LinkedInIcon className="size-4" />,
+    link: 'https://www.linkedin.com/company/keter-marketing/',
+    label: 'LinkedIn',
+    hoverColor: 'hover:text-[#0A66C2] hover:border-[#0A66C2]/40',
+  },
+  {
+    icon: <FacebookIcon className="size-4" />,
+    link: 'https://www.facebook.com/',
+    label: 'Facebook',
+    hoverColor: 'hover:text-[#1877F2] hover:border-[#1877F2]/40',
+  },
+  {
+    icon: <WhatsAppIcon className="size-4" />,
+    link: 'https://wa.me/2290141360803',
+    label: 'WhatsApp',
+    hoverColor: 'hover:text-[#25D366] hover:border-[#25D366]/40',
+  },
+]
+
 export default function Footer() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="bg-[#0B0B0B] border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12">
-          {/* Column 1 — Logo + tagline + social */}
-          <div className="md:col-span-2">
-            <Image
-              src="/keter-logo.png"
-              alt="Keter Marketing"
-              width={120}
-              height={35}
-              className="h-8 w-auto mb-5"
-              priority
-            />
-            <p className="text-sm text-white/35 leading-relaxed max-w-sm mb-6">
+    <footer className="relative bg-[#0B0B0B]">
+      {/* Top radial gradient glow */}
+      <div className="bg-[radial-gradient(35%_80%_at_30%_0%,rgba(212,175,55,0.06),transparent)] mx-auto max-w-5xl md:border-x md:border-white/5">
+        {/* Top separator line */}
+        <div className="bg-white/5 absolute inset-x-0 h-px w-full" />
+
+        {/* Main grid */}
+        <div className="grid max-w-5xl grid-cols-6 gap-6 p-6 md:p-8">
+          {/* Left column — Logo, tagline, social */}
+          <div className="col-span-6 flex flex-col gap-5 md:col-span-4">
+            <a href="#hero" className="w-max">
+              <Image
+                src="/keter-logo.png"
+                alt="Keter Marketing"
+                width={110}
+                height={32}
+                className="h-7 w-auto opacity-30 hover:opacity-60 transition-opacity duration-300"
+                priority
+              />
+            </a>
+            <p className="text-white/30 max-w-sm font-mono text-sm text-balance leading-relaxed">
               La Couronne. Des sites web stratégiques qui génèrent de vrais clients — pas juste des visiteurs. Copywriting intégré. Résultats mesurables.
             </p>
-            {/* Social icons — official brand SVGs */}
-            <div className="flex items-center gap-3">
+            <div className="flex gap-2">
+              {socialLinks.map((item, i) => (
+                <a
+                  key={i}
+                  className={`rounded-md border border-white/10 p-2 text-white/40 transition-all duration-200 hover:bg-white/5 ${item.hoverColor}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={item.link}
+                  aria-label={item.label}
+                >
+                  {item.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Services column */}
+          <div className="col-span-3 w-full md:col-span-1">
+            <span className="text-white/20 mb-2 block text-[11px] uppercase tracking-[0.15em] font-semibold">
+              Services
+            </span>
+            <div className="flex flex-col gap-0.5">
+              {services.map(({ href, title }, i) => (
+                <a
+                  key={i}
+                  className="w-max py-1 text-sm text-white/40 duration-200 hover:text-[#D4AF37] hover:underline"
+                  href={href}
+                >
+                  {title}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Company column */}
+          <div className="col-span-3 w-full md:col-span-1">
+            <span className="text-white/20 mb-2 block text-[11px] uppercase tracking-[0.15em] font-semibold">
+              Entreprise
+            </span>
+            <div className="flex flex-col gap-0.5">
+              {company.map(({ href, title }, i) => (
+                <a
+                  key={i}
+                  className="w-max py-1 text-sm text-white/40 duration-200 hover:text-[#D4AF37] hover:underline"
+                  href={href}
+                >
+                  {title}
+                </a>
+              ))}
               <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#E4405F] hover:border-[#E4405F]/40 transition-all duration-200"
-                aria-label="Instagram"
-              >
-                <InstagramIcon className="w-[18px] h-[18px]" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/keter-marketing/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#0A66C2] hover:border-[#0A66C2]/40 transition-all duration-200"
-                aria-label="LinkedIn"
-              >
-                <LinkedInIcon className="w-[18px] h-[18px]" />
-              </a>
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#1877F2] hover:border-[#1877F2]/40 transition-all duration-200"
-                aria-label="Facebook"
-              >
-                <FacebookIcon className="w-[18px] h-[18px]" />
-              </a>
-              <a
+                className="w-max py-1 text-sm text-white/40 duration-200 hover:text-[#25D366] hover:underline"
                 href="https://wa.me/2290141360803"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#25D366] hover:border-[#25D366]/40 transition-all duration-200"
-                aria-label="WhatsApp"
               >
-                <WhatsAppIcon className="w-[18px] h-[18px]" />
-              </a>
-            </div>
-          </div>
-
-          {/* Column 2 — Services */}
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-white/25 mb-5">
-              Services
-            </h4>
-            <div className="flex flex-col gap-3">
-              {serviceLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-sm text-white/50 hover:text-[#D4AF37] transition-colors duration-200"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Column 3 — Company */}
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-[0.15em] text-white/25 mb-5">
-              Entreprise
-            </h4>
-            <div className="flex flex-col gap-3">
-              {companyLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className="text-sm text-white/50 hover:text-[#D4AF37] transition-colors duration-200"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <a href="mailto:contact@ketermarketing.com" className="text-sm text-white/50 hover:text-[#D4AF37] transition-colors duration-200">
-                Contact
-              </a>
-              <a href="https://wa.me/2290141360803" target="_blank" rel="noopener noreferrer" className="text-sm text-white/50 hover:text-[#D4AF37] transition-colors duration-200">
                 WhatsApp
               </a>
             </div>
           </div>
         </div>
 
+        {/* Bottom separator line */}
+        <div className="bg-white/5 absolute inset-x-0 h-px w-full" />
+
         {/* Bottom bar */}
-        <div className="mt-14 pt-6 border-t border-white/5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p className="text-xs text-white/20 font-medium tracking-wider">
-              KETER MARKETING — La Couronne.
-            </p>
-            <p className="text-xs text-white/20">
-              © {new Date().getFullYear()} Keter Marketing. Tous droits réservés.
-            </p>
-          </div>
+        <div className="flex max-w-5xl flex-col justify-between gap-2 px-6 pt-3 pb-6 md:px-8">
+          <p className="text-white/15 text-center font-mono text-xs tracking-wide">
+            © {year} Keter Marketing — La Couronne. Tous droits réservés.
+          </p>
         </div>
       </div>
     </footer>
