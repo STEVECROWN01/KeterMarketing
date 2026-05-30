@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import AnimatedSection from './AnimatedSection'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { ExternalLink, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
 const projects = [
@@ -38,26 +38,28 @@ const projects = [
 
 export default function PortfolioSection() {
   return (
-    <section id="portfolio" className="bg-[#0B0B0B]">
+    <section id="portfolio" className="bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-36">
-        {/* Header */}
+        {/* Header — Sher Agency style: title left, CTA right */}
         <AnimatedSection>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 md:mb-14">
             <div>
               <span className="inline-block text-[12px] font-semibold uppercase tracking-[0.15em] text-[#D4AF37] mb-3">
                 Portfolio
               </span>
-              <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-semibold leading-[1.15] text-white">
+              <h2 className="text-[28px] sm:text-[34px] md:text-[40px] font-semibold leading-[1.15] text-[#0B0B0B]">
                 Sites que nous avons créés.
               </h2>
             </div>
-            <Link
-              href="/request-a-quote"
-              className="inline-flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.08em] text-[#D4AF37] hover:text-[#B8960C] transition-colors duration-200 group shrink-0"
-            >
-              Obtenir un devis
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-            </Link>
+            <div className="flex items-center gap-4 shrink-0">
+              <Link
+                href="/our-work"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#0B0B0B]/20 text-[#0B0B0B] text-[13px] font-semibold uppercase tracking-[0.08em] hover:bg-[#0B0B0B] hover:text-white transition-all duration-300 group"
+              >
+                Plus de réalisations
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+            </div>
           </div>
         </AnimatedSection>
 
@@ -70,7 +72,7 @@ export default function PortfolioSection() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block relative rounded-xl overflow-hidden bg-white/[0.03] border border-white/10 hover:border-[#D4AF37]/40 transition-all duration-300"
+                className="group block relative rounded-2xl overflow-hidden bg-[#0B0B0B] border border-[#0B0B0B]/5 hover:border-[#D4AF37]/30 transition-all duration-300 shadow-sm"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
@@ -79,27 +81,31 @@ export default function PortfolioSection() {
                     fill
                     className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-[#0B0B0B]/0 group-hover:bg-[#0B0B0B]/30 transition-colors duration-300" />
+                  {/* Dark overlay on hover */}
+                  <div className="absolute inset-0 bg-[#0B0B0B]/0 group-hover:bg-[#0B0B0B]/50 transition-colors duration-300" />
+
                   {/* Tag */}
                   <div className="absolute top-4 left-4">
                     <span className="inline-block px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] bg-[#D4AF37] text-[#0B0B0B] rounded-full">
                       {project.tag}
                     </span>
                   </div>
-                  {/* External link icon */}
-                  <div className="absolute top-4 right-4 w-9 h-9 rounded-full bg-[#0B0B0B]/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ExternalLink className="w-4 h-4 text-white" />
+
+                  {/* "Voir le projet" button — Sher Agency style, appears on hover */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-[#0B0B0B] text-[13px] font-semibold uppercase tracking-[0.06em]">
+                      Voir le projet
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </span>
                   </div>
                 </div>
+
                 {/* Info */}
-                <div className="p-5">
-                  <h3 className="text-white text-lg font-semibold mb-1 group-hover:text-[#D4AF37] transition-colors duration-200">
+                <div className="p-5 bg-white">
+                  <h3 className="text-[#0B0B0B] text-lg font-semibold mb-1 group-hover:text-[#D4AF37] transition-colors duration-200">
                     {project.title}
                   </h3>
-                  <p className="text-white/40 text-[13px] leading-snug">
-                    {project.description}
-                  </p>
+                  <p className="text-[#0B0B0B]/40 text-[13px] leading-snug">{project.description}</p>
                 </div>
               </a>
             ))}
