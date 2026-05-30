@@ -95,29 +95,25 @@ export default function RequestQuotePage() {
                 </div>
               </AnimatedSection>
 
-              {/* RIGHT — Exact Same Form Widget (MsgSndr / LeadConnector iframe dynamically lazyloaded) */}
+              {/* RIGHT — Formulaire LeadConnector chargé en lazy */}
               <AnimatedSection delay={0.15}>
-                <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 sm:p-8 md:p-10 min-h-[600px] flex flex-col justify-center relative overflow-hidden">
-                  {!injected ? (
-                    <div className="text-center py-20">
-                      <p className="text-white/40 text-sm animate-pulse mb-3">Chargement du formulaire de candidature...</p>
-                      <p className="text-white/20 text-xs">Bougez votre souris ou faites défiler pour charger immédiatement</p>
-                    </div>
-                  ) : (
-                    <div className="w-full">
-                      <iframe
-                        src="https://api.leadconnectorhq.com/widget/form/KAY778x3PVdeb4J8MnJq"
-                        style={{ width: '100%', height: '820px', border: 'none', borderRadius: '8px', overflow: 'hidden' }}
-                        id="inline-KAY778x3PVdeb4J8MnJq"
-                        data-layout="{'id':'INLINE'}"
-                        data-trigger-type="alwaysShow"
-                        data-activation-type="alwaysActivated"
-                        data-form-name="New Client Application"
-                        title="New Client Application"
-                      />
-                    </div>
-                  )}
-                </div>
+                {!injected ? (
+                  <div className="text-center py-20">
+                    <p className="text-white/40 text-sm animate-pulse mb-3">Chargement du formulaire...</p>
+                    <p className="text-white/20 text-xs">Bougez votre souris ou faites défiler pour charger immédiatement</p>
+                  </div>
+                ) : (
+                  <iframe
+                    src="https://api.leadconnectorhq.com/widget/form/KAY778x3PVdeb4J8MnJq"
+                    style={{ width: '100%', height: '820px', border: 'none', overflow: 'hidden' }}
+                    id="inline-KAY778x3PVdeb4J8MnJq"
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-activation-type="alwaysActivated"
+                    data-form-name="Nouvelle Demande Client"
+                    title="Nouvelle Demande Client"
+                  />
+                )}
               </AnimatedSection>
 
             </div>
