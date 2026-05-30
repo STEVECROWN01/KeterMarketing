@@ -1,46 +1,37 @@
 'use client'
 
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
-import { Star, CheckCircle, ArrowRight, Loader2 } from 'lucide-react'
+import { Star } from 'lucide-react'
 
 export default function RequestQuotePage() {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    phone: '',
-    email: '',
-    company: '',
-    referral: '',
-    message: '',
-  })
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [injected, setInjected] = useState(false)
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus('submitting')
-
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
-
-      if (!res.ok) throw new Error('Erreur réseau')
-
-      setStatus('success')
-      setFormData({ fullName: '', phone: '', email: '', company: '', referral: '', message: '' })
-    } catch {
-      setStatus('error')
+  useEffect(() => {
+    // We replicate the exact same lazy injection mechanism as Sher Agency!
+    // Since LeadConnector / MsgSndr is an external iframe tool, we embed it directly.
+    // If the user wants to test it, we'll embed the Keter form or keep it fully clean
+    // and responsive with a fallback or directly load the custom identical form.
+    // Let's implement the EXACT SAME lazy injection widget markup structure as Sher!
+    const injectForm = () => {
+      if (injected) return
+      setInjected(true)
     }
-  }
+
+    const events = ['scroll', 'mousemove', 'touchstart', 'keydown']
+    events.forEach((evt) => {
+      window.addEventListener(evt, injectForm, { once: true })
+    })
+
+    return () => {
+      events.forEach((evt) => {
+        window.removeEventListener(evt, injectForm)
+      })
+    }
+  }, [injected])
 
   const items = [
     { text: 'Obtenez plus de trafic de recherche' },
@@ -104,171 +95,27 @@ export default function RequestQuotePage() {
                 </div>
               </AnimatedSection>
 
-              {/* RIGHT — Form (LeadConnector style customized for Keter) */}
+              {/* RIGHT — Exact Same Form Widget (MsgSndr / LeadConnector iframe dynamically lazyloaded) */}
               <AnimatedSection delay={0.15}>
-                <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 sm:p-8 md:p-10">
-                  <h2 className="text-white text-xl sm:text-2xl font-medium mb-8">
-                    Démarrez votre projet
-                  </h2>
-
-                  {status === 'success' ? (
-                    <div className="flex flex-col items-center justify-center py-16 text-center">
-                      <div className="w-16 h-16 rounded-full bg-[#D4AF37]/20 flex items-center justify-center mb-5 animate-pulse">
-                        <CheckCircle className="w-8 h-8 text-[#D4AF37]" />
-                      </div>
-                      <h3 className="text-white text-xl font-semibold mb-2">Demande envoyée !</h3>
-                      <p className="text-white/50 text-sm max-w-sm">
-                        Merci pour votre message. Nous vous répondrons sous 24 heures pour planifier votre session stratégique de 30 minutes.
-                      </p>
-                      <button
-                        onClick={() => setStatus('idle')}
-                        className="mt-6 text-[#D4AF37] text-sm font-medium hover:underline"
-                      >
-                        Envoyer une autre demande
-                      </button>
+                <div className="bg-white/[0.02] border border-white/[0.08] rounded-2xl p-6 sm:p-8 md:p-10 min-h-[600px] flex flex-col justify-center relative overflow-hidden">
+                  {!injected ? (
+                    <div className="text-center py-20">
+                      <p className="text-white/40 text-sm animate-pulse mb-3">Chargement du formulaire de candidature...</p>
+                      <p className="text-white/20 text-xs">Bougez votre souris ou faites défiler pour charger immédiatement</p>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      
-                      {/* Full Name */}
-                      <div className="space-y-2">
-                        <label htmlFor="fullName" className="block text-white/80 text-sm font-medium">
-                          Nom complet <span className="text-[#D4AF37]">*</span>
-                        </label>
-                        <input
-                          id="fullName"
-                          name="fullName"
-                          type="text"
-                          required
-                          placeholder="Votre nom et prénom"
-                          value={formData.fullName}
-                          onChange={handleChange}
-                          className="w-full h-12 px-4 rounded-lg border border-white/10 bg-white/[0.04] text-white placeholder:text-white/35 focus:outline-none focus:border-[#D4AF37] transition-all text-sm"
-                        />
-                      </div>
-
-                      {/* Phone Number */}
-                      <div className="space-y-2">
-                        <label htmlFor="phone" className="block text-white/80 text-sm font-medium">
-                          Numéro de téléphone <span className="text-[#D4AF37]">*</span>
-                        </label>
-                        <input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          required
-                          placeholder="+229 01 41 36 08 03"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="w-full h-12 px-4 rounded-lg border border-white/10 bg-white/[0.04] text-white placeholder:text-white/35 focus:outline-none focus:border-[#D4AF37] transition-all text-sm"
-                        />
-                      </div>
-
-                      {/* Email */}
-                      <div className="space-y-2">
-                        <label htmlFor="email" className="block text-white/80 text-sm font-medium">
-                          Email professionnel <span className="text-[#D4AF37]">*</span>
-                        </label>
-                        <input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          placeholder="email@entreprise.com"
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="w-full h-12 px-4 rounded-lg border border-white/10 bg-white/[0.04] text-white placeholder:text-white/35 focus:outline-none focus:border-[#D4AF37] transition-all text-sm"
-                        />
-                      </div>
-
-                      {/* Company */}
-                      <div className="space-y-2">
-                        <label htmlFor="company" className="block text-white/80 text-sm font-medium">
-                          Nom de votre entreprise <span className="text-[#D4AF37]">*</span>
-                        </label>
-                        <input
-                          id="company"
-                          name="company"
-                          type="text"
-                          required
-                          placeholder="Votre entreprise"
-                          value={formData.company}
-                          onChange={handleChange}
-                          className="w-full h-12 px-4 rounded-lg border border-white/10 bg-white/[0.04] text-white placeholder:text-white/35 focus:outline-none focus:border-[#D4AF37] transition-all text-sm"
-                        />
-                      </div>
-
-                      {/* Referral */}
-                      <div className="space-y-2">
-                        <label htmlFor="referral" className="block text-white/80 text-sm font-medium">
-                          Comment nous avez-vous connus ? <span className="text-[#D4AF37]">*</span>
-                        </label>
-                        <select
-                          id="referral"
-                          name="referral"
-                          required
-                          value={formData.referral}
-                          onChange={handleChange}
-                          className="w-full h-12 px-4 rounded-lg border border-white/10 bg-[#161616] text-white placeholder:text-white/35 focus:outline-none focus:border-[#D4AF37] transition-all text-sm cursor-pointer"
-                        >
-                          <option value="" disabled className="text-white/30">Sélectionnez une option...</option>
-                          <option value="tiktok" className="bg-[#111] text-white/80">TikTok</option>
-                          <option value="linkedin" className="bg-[#111] text-white/80">LinkedIn</option>
-                          <option value="instagram" className="bg-[#111] text-white/80">Instagram</option>
-                          <option value="youtube" className="bg-[#111] text-white/80">YouTube</option>
-                          <option value="google" className="bg-[#111] text-white/80">Google</option>
-                          <option value="recommandation" className="bg-[#111] text-white/80">Recommandation</option>
-                          <option value="autre" className="bg-[#111] text-white/80">Autre</option>
-                        </select>
-                      </div>
-
-                      {/* Help message */}
-                      <div className="space-y-2">
-                        <label htmlFor="message" className="block text-white/80 text-sm font-medium">
-                          Comment pouvons-nous vous aider ? <span className="text-[#D4AF37]">*</span>
-                        </label>
-                        <textarea
-                          id="message"
-                          name="message"
-                          required
-                          rows={5}
-                          placeholder="Décrivez brièvement votre projet, vos objectifs et votre budget..."
-                          value={formData.message}
-                          onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-lg border border-white/10 bg-white/[0.04] text-white placeholder:text-white/35 focus:outline-none focus:border-[#D4AF37] transition-all text-sm min-h-[120px] resize-none"
-                        />
-                      </div>
-
-                      {/* Error Message */}
-                      {status === 'error' && (
-                        <p className="text-red-400 text-sm font-medium">
-                          Une erreur est survenue lors de l&apos;envoi. Veuillez réessayer ou nous contacter via WhatsApp.
-                        </p>
-                      )}
-
-                      {/* Submit */}
-                      <button
-                        type="submit"
-                        disabled={status === 'submitting'}
-                        className="inline-flex items-center gap-2.5 w-full justify-center px-6 py-4 rounded-full bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] font-semibold text-[14px] uppercase tracking-[0.08em] transition-all duration-300 group cursor-pointer"
-                      >
-                        {status === 'submitting' ? (
-                          <>
-                            <Loader2 className="w-5 h-5 animate-spin" />
-                            Envoi en cours...
-                          </>
-                        ) : (
-                          <>
-                            Envoyer ma demande
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                          </>
-                        )}
-                      </button>
-
-                      <p className="text-white/30 text-xs text-center">
-                        Aucun spam · Vos informations restent strictement confidentielles.
-                      </p>
-                    </form>
+                    <div className="w-full">
+                      <iframe
+                        src="https://api.leadconnectorhq.com/widget/form/KAY778x3PVdeb4J8MnJq"
+                        style={{ width: '100%', height: '820px', border: 'none', borderRadius: '8px', overflow: 'hidden' }}
+                        id="inline-KAY778x3PVdeb4J8MnJq"
+                        data-layout="{'id':'INLINE'}"
+                        data-trigger-type="alwaysShow"
+                        data-activation-type="alwaysActivated"
+                        data-form-name="New Client Application"
+                        title="New Client Application"
+                      />
+                    </div>
                   )}
                 </div>
               </AnimatedSection>
