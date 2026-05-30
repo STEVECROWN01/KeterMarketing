@@ -4,6 +4,7 @@ import AnimatedSection from './AnimatedSection'
 import { Users, Palette, PenTool, Code, Rocket } from 'lucide-react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import { WHATSAPP_BOOKING_URL } from '@/lib/constants'
 
 const steps = [
   {
@@ -156,7 +157,9 @@ export default function ProcessSection() {
         <AnimatedSection delay={0.4}>
           <div className="mt-14 md:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="#cta-final"
+              href={WHATSAPP_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-md bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] font-semibold text-[14px] uppercase tracking-[0.06em] hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all duration-300 group"
             >
               Démarrer mon projet

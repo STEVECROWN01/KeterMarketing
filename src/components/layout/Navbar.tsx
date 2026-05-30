@@ -6,6 +6,7 @@ import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from '@/components/ui/use-scroll';
+import { WHATSAPP_BOOKING_URL } from '@/lib/constants';
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -79,7 +80,7 @@ export default function Navbar() {
             asChild
             className="ml-2 bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] font-semibold text-[12px] uppercase tracking-[0.08em] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300"
           >
-            <a href="#cta-final">Démarrer mon projet</a>
+            <a href={WHATSAPP_BOOKING_URL} target="_blank" rel="noopener noreferrer">Démarrer mon projet</a>
           </Button>
         </div>
 
@@ -128,7 +129,7 @@ export default function Navbar() {
               asChild
               className="w-full bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] font-semibold text-[13px] uppercase tracking-[0.08em] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300"
             >
-              <a href="#cta-final" onClick={() => setOpen(false)}>
+              <a href={WHATSAPP_BOOKING_URL} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
                 Démarrer mon projet
               </a>
             </Button>

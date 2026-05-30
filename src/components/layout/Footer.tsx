@@ -50,7 +50,7 @@ const company = [
   { title: 'Portfolio', href: '#portfolio' },
   { title: 'À Propos', href: '#about' },
   { title: 'FAQ', href: '#faq' },
-  { title: 'Contact', href: '#cta-final' },
+  { title: 'Contact', href: 'https://wa.me/2290141360803' },
 ]
 
 const socialLinks = [

@@ -4,9 +4,7 @@ import AnimatedSection from './AnimatedSection'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
-
-const WHATSAPP_URL =
-  'https://wa.me/2290141360803?text=Bonjour%20Keter%20Marketing%2C%0AJe%20m%27appelle%20%5BNOM%5D.%0AJe%20suis%20int%C3%A9ress%C3%A9(e)%20par%20%3A%20%5BOFFRE%5D.%0A%5BMESSAGE%20LIBRE%5D%0AMon%20num%C3%A9ro%20%3A%20%5BT%C3%89L%C3%89PHONE%5D'
+import { WHATSAPP_BOOKING_URL } from '@/lib/constants'
 
 export default function CTASection() {
   return (
@@ -24,7 +22,7 @@ export default function CTASection() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-              <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              <Link href={WHATSAPP_BOOKING_URL} target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#0B0B0B] hover:bg-[#1A1A1A] text-white rounded-md px-8 py-4 text-[14px] font-semibold uppercase tracking-[0.06em] transition-all duration-300 h-auto min-w-[260px]">
                   Réserver mon appel gratuit
                   <ArrowRight className="w-4 h-4 ml-2" />

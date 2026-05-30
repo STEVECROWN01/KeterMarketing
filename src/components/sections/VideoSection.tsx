@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Play, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import AnimatedSection from './AnimatedSection'
+import { WHATSAPP_BOOKING_URL } from '@/lib/constants'
 
 export default function VideoSection() {
   return (
@@ -66,7 +67,7 @@ export default function VideoSection() {
               Stratégie, copywriting, design — découvrez notre approche en 90 secondes. Pas de bla-bla. Juste des résultats.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-3">
-              <Link href="#cta-final">
+              <Link href={WHATSAPP_BOOKING_URL} target="_blank" rel="noopener noreferrer">
                 <Button className="bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] rounded-md px-7 py-3.5 text-[14px] font-semibold uppercase tracking-[0.06em] transition-all duration-300 h-auto">
                   Réserver un appel
                 </Button>

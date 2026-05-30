@@ -3,6 +3,7 @@
 import AnimatedSection from './AnimatedSection'
 import Link from 'next/link'
 import { ArrowRight, Globe, PenTool, BarChart3 } from 'lucide-react'
+import { WHATSAPP_BOOKING_URL } from '@/lib/constants'
 
 const services = [
   {
@@ -38,7 +39,9 @@ export default function ServicesSection() {
               </h2>
             </div>
             <Link
-              href="#cta-final"
+              href={WHATSAPP_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.08em] text-[#D4AF37] hover:text-[#B8960C] transition-colors duration-200 group shrink-0"
             >
               Démarrer mon projet

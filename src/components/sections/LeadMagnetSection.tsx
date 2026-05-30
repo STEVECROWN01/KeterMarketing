@@ -3,6 +3,7 @@
 import AnimatedSection from './AnimatedSection'
 import { CheckSquare, ArrowRight, Download } from 'lucide-react'
 import Link from 'next/link'
+import { WHATSAPP_BOOKING_URL, WHATSAPP_QUOTE_URL } from '@/lib/constants'
 
 export default function LeadMagnetSection() {
   return (
@@ -69,7 +70,9 @@ export default function LeadMagnetSection() {
 
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <Link
-                href="#cta-final"
+                href={WHATSAPP_QUOTE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-md bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] font-semibold text-[14px] uppercase tracking-[0.06em] hover:shadow-[0_0_30px_rgba(212,175,55,0.3)] transition-all duration-300 group"
               >
                 <Download className="w-4 h-4" />
@@ -77,7 +80,9 @@ export default function LeadMagnetSection() {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="#cta-final"
+                href={WHATSAPP_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.08em] text-white/50 hover:text-[#D4AF37] transition-colors duration-200 group"
               >
                 Ou réserver un appel gratuit
