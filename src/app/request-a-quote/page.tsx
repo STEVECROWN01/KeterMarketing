@@ -97,23 +97,17 @@ export default function RequestQuotePage() {
 
               {/* RIGHT — Formulaire LeadConnector chargé en lazy */}
               <AnimatedSection delay={0.15}>
-                {!injected ? (
-                  <div className="text-center py-20">
-                    <p className="text-white/40 text-sm animate-pulse mb-3">Chargement du formulaire...</p>
-                    <p className="text-white/20 text-xs">Bougez votre souris ou faites défiler pour charger immédiatement</p>
-                  </div>
-                ) : (
-                  <iframe
-                    src="https://api.leadconnectorhq.com/widget/form/KAY778x3PVdeb4J8MnJq"
-                    style={{ width: '100%', height: '820px', border: 'none', overflow: 'hidden' }}
-                    id="inline-KAY778x3PVdeb4J8MnJq"
-                    data-layout="{'id':'INLINE'}"
-                    data-trigger-type="alwaysShow"
-                    data-activation-type="alwaysActivated"
-                    data-form-name="Nouvelle Demande Client"
-                    title="Nouvelle Demande Client"
-                  />
-                )}
+                <iframe
+                  src="https://api.leadconnectorhq.com/widget/form/KAY778x3PVdeb4J8MnJq"
+                  style={{ width: '100%', height: '1220px', border: 'none' }}
+                  id="inline-KAY778x3PVdeb4J8MnJq"
+                  data-layout="{'id':'INLINE'}"
+                  data-trigger-type="alwaysShow"
+                  data-activation-type="alwaysActivated"
+                  data-form-name="Nouvelle Demande Client"
+                  title="Nouvelle Demande Client"
+                  scrolling="no"
+                />
               </AnimatedSection>
 
             </div>
