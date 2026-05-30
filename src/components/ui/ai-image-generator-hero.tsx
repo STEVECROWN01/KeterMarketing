@@ -86,7 +86,6 @@ export function ImageCarouselHero({
           </div>
         )}
 
-        {/* Carousel Container */}
         <div
           className="relative w-full max-w-6xl h-72 sm:h-96 md:h-[500px] lg:h-[560px] mb-8 sm:mb-12"
           onMouseMove={handleMouseMove}
@@ -94,10 +93,14 @@ export function ImageCarouselHero({
           onMouseLeave={() => setIsHovering(false)}
         >
           {/* Rotating Image Cards */}
-          <div className="absolute inset-0 flex items-center justify-center" style={{ perspective: "1000px" }}>
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden" style={{ perspective: "1000px" }}>
             {images.map((image, index) => {
               const angle = (rotatingCards[index] || 0) * (Math.PI / 180)
-              const radius = 260
+              
+              // Responsive radius based on viewport width
+              // On desktop/large tablet, radius is 260px. On smaller screens, radius shrinks dynamically to prevent horizontal overflow.
+              const radius = typeof window !== 'undefined' && window.innerWidth < 640 ? 140 : 260
+              
               const x = Math.cos(angle) * radius
               const y = Math.sin(angle) * radius * 0.4 // Flatten for horizontal ellipse
 
@@ -126,17 +129,17 @@ export function ImageCarouselHero({
                     transformStyle: "preserve-3d",
                     zIndex: zIndex,
                     opacity: opacity,
-                    width: "clamp(200px, 28vw, 380px)",
-                    height: "clamp(130px, 18vw, 250px)",
+                    width: "clamp(120px, 24vw, 380px)",
+                    height: "clamp(80px, 15vw, 250px)",
                   }}
                 >
                   <div
                     className={cn(
-                      "relative w-full h-full rounded-2xl overflow-hidden",
+                      "relative w-full h-full rounded-xl sm:rounded-2xl overflow-hidden",
                       "transition-all duration-300 hover:scale-105",
                       "cursor-pointer group",
                       "border border-white/10",
-                      "shadow-[0_0_30px_rgba(212,175,55,0.15)]",
+                      "shadow-[0_0_20px_rgba(212,175,55,0.1)] sm:shadow-[0_0_30px_rgba(212,175,55,0.15)]",
                     )}
                     style={{
                       transformStyle: "preserve-3d",
@@ -149,7 +152,7 @@ export function ImageCarouselHero({
                       className="object-cover object-top"
                       quality={95}
                       priority={index < 2}
-                      sizes="(max-width: 640px) 400px, (max-width: 1024px) 560px, 760px"
+                      sizes="(max-width: 640px) 240px, (max-width: 1024px) 560px, 760px"
                     />
                     {/* Gold shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
