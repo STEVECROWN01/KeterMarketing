@@ -3,38 +3,30 @@
 import { ImageCarouselHero } from '@/components/ui/ai-image-generator-hero'
 import { Star, Award, Zap, Clock } from 'lucide-react'
 
-const heroProjects = [
+const heroImages = [
   {
     id: '1',
     src: '/portfolio-winagrotech.png',
     alt: 'Win Agro Tech — Site vitrine agri-tech',
-    title: 'Win Agro Tech',
-    tag: 'Site Vitrine',
-    url: 'https://www.winagrotech.com/',
+    rotation: -12,
   },
   {
     id: '2',
     src: '/portfolio-academiahelm.png',
     alt: 'Academia Helm — Plateforme SaaS éducative',
-    title: 'Academia Helm',
-    tag: 'SaaS / Web App',
-    url: 'https://www.academiahelm.com/',
+    rotation: -5,
   },
   {
     id: '3',
     src: '/portfolio-afribayit.png',
     alt: 'AfriBayit — Marketplace immobilière',
-    title: 'AfriBayit',
-    tag: 'Marketplace',
-    url: 'https://afribayit.vercel.app/',
+    rotation: 5,
   },
   {
     id: '4',
     src: '/portfolio-foncierfacile.png',
     alt: 'Foncier Facile Afrique — Site vitrine foncier',
-    title: 'Foncier Facile Afrique',
-    tag: 'Site Vitrine',
-    url: 'https://www.foncierfacileafrique.fr/',
+    rotation: 10,
   },
 ]
 
@@ -83,7 +75,7 @@ export default function HeroSection() {
         const el = document.querySelector('#portfolio')
         el?.scrollIntoView({ behavior: 'smooth' })
       }}
-      projects={heroProjects}
+      images={heroImages}
       features={heroFeatures}
       ratingBadge={
         <span className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm">
