@@ -11,7 +11,6 @@ import FeaturedReviewSection from '@/components/sections/FeaturedReviewSection'
 import TestimonialsSection from '@/components/sections/TestimonialsSection'
 import ProcessSection from '@/components/sections/ProcessSection'
 import PortfolioSection from '@/components/sections/PortfolioSection'
-import SocialReelsSection from '@/components/sections/SocialReelsSection'
 import StatsSection from '@/components/sections/StatsSection'
 import LeadMagnetSection from '@/components/sections/LeadMagnetSection'
 import TeamSection from '@/components/sections/TeamSection'
@@ -46,9 +45,6 @@ export default function Home() {
 
         {/* 8 — Portfolio / "Websites We Created" */}
         <PortfolioSection />
-
-        {/* 9 — Réseaux sociaux / TikTok Reels (Sher: social content section) */}
-        <SocialReelsSection />
 
         {/* 10 — Chiffres clés (Sher: stats section) */}
         <StatsSection />
