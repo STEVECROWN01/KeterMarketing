@@ -48,9 +48,8 @@ const services = [
 const company = [
   { title: 'Notre Process', href: '/webdesign' },
   { title: 'Portfolio', href: '/our-work' },
-  { title: 'À Propos', href: '/#about' },
-  { title: 'FAQ', href: '/#faq' },
-  { title: 'Contact', href: '/request-a-quote' },
+  { title: 'Contactez-nous', href: '/contact-us' },
+  { title: 'Carrières', href: '/careers' },
 ]
 
 const socialLinks = [
@@ -172,10 +171,16 @@ export default function Footer() {
         <div className="bg-white/5 absolute inset-x-0 h-px w-full" />
 
         {/* Bottom bar */}
-        <div className="flex max-w-5xl flex-col justify-between gap-2 px-6 pt-3 pb-6 md:px-8">
-          <p className="text-white/15 text-center font-mono text-xs tracking-wide">
+        <div className="flex max-w-5xl flex-col sm:flex-row justify-between items-center gap-2 px-6 pt-3 pb-6 md:px-8">
+          <p className="text-white/15 font-mono text-xs tracking-wide">
             © {year} Keter Marketing — La Couronne. Tous droits réservés.
           </p>
+          <a
+            href="/privacy-policy"
+            className="text-white/15 font-mono text-xs tracking-wide hover:text-white/40 transition-colors"
+          >
+            Politique de confidentialité
+          </a>
         </div>
       </div>
     </footer>
