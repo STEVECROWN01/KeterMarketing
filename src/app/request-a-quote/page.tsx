@@ -20,8 +20,8 @@ export default function RequestQuotePage() {
                 Démarrer le Processus
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6">
-                Request a Quote & <br />
-                <span className="text-[#D4AF37]">Book A Call</span>
+                Demander un Devis &amp; <br />
+                <span className="text-[#D4AF37]">Réserver un Appel</span>
               </h1>
               <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
                 Remplissez notre formulaire pour planifier un appel stratégique de 30 minutes. Nous analyserons votre présence web actuelle et vous proposerons un plan d&apos;action clair.

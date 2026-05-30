@@ -44,8 +44,8 @@ export default function WebsiteManagementPage() {
                 Gestion & Maintenance
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6">
-                Website <br />
-                <span className="text-[#D4AF37]">Management Services</span>
+                Gestion &amp; <br />
+                <span className="text-[#D4AF37]">Maintenance Web</span>
               </h1>
               <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
                 Laissez-nous gérer la technique. Concentrez-vous sur vos ventes. Hébergement de haute qualité, mises à jour, sécurité et support illimité.

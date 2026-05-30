@@ -20,8 +20,8 @@ export default function OurWorkPage() {
                 Portfolio
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6">
-                Our Work & <br />
-                <span className="text-[#D4AF37]">Case Studies</span>
+                Nos Réalisations &amp; <br />
+                <span className="text-[#D4AF37]">Études de Cas</span>
               </h1>
               <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
                 Découvrez une sélection de sites vitrines, e-commerce et applications SaaS conçus par l&apos;équipe de Keter Marketing pour maximiser l&apos;acquisition clients.

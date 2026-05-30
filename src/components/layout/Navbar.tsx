@@ -8,9 +8,9 @@ import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
 import { useScroll } from '@/components/ui/use-scroll';
 
 const navLinks = [
-  { label: 'Our Process', href: '/webdesign' },
-  { label: 'Website Management', href: '/website-management' },
-  { label: 'Search Engine Marketing', href: '/search-engine-marketing' },
+  { label: 'Notre Process', href: '/webdesign' },
+  { label: 'Maintenance Web', href: '/website-management' },
+  { label: 'Acquisition Google', href: '/search-engine-marketing' },
   { label: 'Portfolio', href: '/our-work' },
 ];
 

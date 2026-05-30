@@ -22,8 +22,8 @@ export default function WebDesignPage() {
                 <Sparkles className="w-3.5 h-3.5" /> Notre Méthode
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6">
-                Our Web Design <br />
-                <span className="text-[#D4AF37]">& Development Process</span>
+                Notre Processus de <br />
+                <span className="text-[#D4AF37]">Design & Développement</span>
               </h1>
               <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
                 Découvrez comment nous créons des sites internet haut de gamme conçus pour capter l&apos;attention de votre cible et générer des ventes.

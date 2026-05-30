@@ -40,9 +40,9 @@ function WhatsAppIcon({ className = '' }: { className?: string }) {
 
 const services = [
   { title: 'Création de site web', href: '/webdesign' },
-  { title: 'Landing page', href: '/webdesign' },
-  { title: 'Website Management', href: '/website-management' },
-  { title: 'Search Engine Marketing', href: '/search-engine-marketing' },
+  { title: 'Landing pages', href: '/webdesign' },
+  { title: 'Maintenance Web', href: '/website-management' },
+  { title: 'Acquisition Google', href: '/search-engine-marketing' },
 ]
 
 const company = [

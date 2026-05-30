@@ -10,7 +10,7 @@ const services = [
   {
     number: '01',
     title: 'Créer ou refondre votre site web',
-    description: 'Get a website or landing page that converts more visitors into customers, and attracts more traffic from Google. Un site stratégique qui convertit vos visiteurs en clients — avec copywriting, design et développement intégrés. Pas de lorem ipsum, pas de placebos visuels.',
+    description: 'Obtenez un site web ou une landing page qui convertit plus de visiteurs en clients et attire plus de trafic depuis Google. Un site stratégique qui convertit vos visiteurs en clients — avec copywriting, design et développement intégrés. Pas de lorem ipsum, pas de placebos visuels.',
   },
   {
     number: '02',
@@ -19,8 +19,8 @@ const services = [
   },
   {
     number: '03',
-    title: 'Repositionner votre message & SEM',
-    description: 'Drive traffic to your website through organic (SEO) and paid (PPC) traffic. Audit de votre présence digitale, copywriting de conversion et stratégie éditoriale pour les entreprises qui veulent des résultats — pas juste du contenu.',
+    title: 'Repositionner votre message & Acquisition',
+    description: 'Générez du trafic vers votre site web grâce au référencement naturel (SEO) et payant (Google Ads). Audit de votre présence digitale, copywriting de conversion et stratégie éditoriale pour les entreprises qui veulent des résultats — pas juste du contenu.',
   },
 ]
 
@@ -43,7 +43,7 @@ export default function ServicesSection() {
                 Ce qu&apos;on fait
               </span>
               <h2 className="text-[32px] sm:text-[38px] md:text-[44px] font-semibold leading-[1.15] text-white mb-6">
-                What we do
+                Ce que nous faisons
               </h2>
               <p className="text-white/45 text-[15px] md:text-base leading-relaxed mb-8 max-w-sm">
                 Des solutions conçues pour transformer votre trafic en clients réguliers. Choisissez la mission qui correspond à votre étape de croissance.

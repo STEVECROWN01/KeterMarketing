@@ -21,8 +21,8 @@ export default function SearchEngineMarketingPage() {
                 SEO & Google Ads
               </span>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6">
-                Search Engine <br />
-                <span className="text-[#D4AF37]">Marketing (SEM)</span>
+                Marketing sur <br />
+                <span className="text-[#D4AF37]">les Moteurs de Recherche</span>
               </h1>
               <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10">
                 Positionnez votre marque devant vos futurs clients lorsqu&apos;ils recherchent activement vos services sur Google. SEO d&apos;acquisition et publicité ROI-focused.
