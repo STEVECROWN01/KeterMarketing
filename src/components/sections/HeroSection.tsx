@@ -2,56 +2,39 @@
 
 import { ImageCarouselHero } from '@/components/ui/ai-image-generator-hero'
 import { Star, Award, Zap, Clock } from 'lucide-react'
-import Link from 'next/link'
 
-const heroImages = [
+const heroProjects = [
   {
     id: '1',
-    src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900',
-    alt: 'Site web professionnel — dashboard analytics',
-    rotation: -15,
+    src: '/portfolio-winagrotech.png',
+    alt: 'Win Agro Tech — Site vitrine agri-tech',
+    title: 'Win Agro Tech',
+    tag: 'Site Vitrine',
+    url: 'https://www.winagrotech.com/',
   },
   {
     id: '2',
-    src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900',
-    alt: 'Stratégie digitale et conversion',
-    rotation: -8,
+    src: '/portfolio-academiahelm.png',
+    alt: 'Academia Helm — Plateforme SaaS éducative',
+    title: 'Academia Helm',
+    tag: 'SaaS / Web App',
+    url: 'https://www.academiahelm.com/',
   },
   {
     id: '3',
-    src: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900',
-    alt: 'Développement web sur mesure',
-    rotation: 5,
+    src: '/portfolio-afribayit.png',
+    alt: 'AfriBayit — Marketplace immobilière',
+    title: 'AfriBayit',
+    tag: 'Marketplace',
+    url: 'https://afribayit.vercel.app/',
   },
   {
     id: '4',
-    src: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900',
-    alt: 'Copywriting stratégique',
-    rotation: 12,
-  },
-  {
-    id: '5',
-    src: 'https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900',
-    alt: 'Design premium',
-    rotation: -12,
-  },
-  {
-    id: '6',
-    src: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900',
-    alt: 'Résultats mesurables',
-    rotation: 8,
-  },
-  {
-    id: '7',
-    src: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900',
-    alt: 'Agence web Afrique',
-    rotation: -5,
-  },
-  {
-    id: '8',
-    src: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=900',
-    alt: 'Présence digitale stratégique',
-    rotation: 10,
+    src: '/portfolio-foncierfacile.png',
+    alt: 'Foncier Facile Afrique — Site vitrine foncier',
+    title: 'Foncier Facile Afrique',
+    tag: 'Site Vitrine',
+    url: 'https://www.foncierfacileafrique.fr/',
   },
 ]
 
@@ -100,7 +83,7 @@ export default function HeroSection() {
         const el = document.querySelector('#portfolio')
         el?.scrollIntoView({ behavior: 'smooth' })
       }}
-      images={heroImages}
+      projects={heroProjects}
       features={heroFeatures}
       ratingBadge={
         <span className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm">
