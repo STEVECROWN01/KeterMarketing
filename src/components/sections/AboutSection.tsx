@@ -2,7 +2,7 @@
 
 import AnimatedSection from './AnimatedSection'
 import { Crown, TrendingUp, Target, ArrowRight } from 'lucide-react'
-import { WHATSAPP_BOOKING_URL } from '@/lib/constants'
+import Link from 'next/link'
 
 const philosophy = [
   {
@@ -119,15 +119,13 @@ export default function AboutSection() {
               <p className="text-[15px] text-white/45 leading-relaxed mb-4">
                 On préfère travailler avec peu de clients — et très bien. Si vous voulez un partenaire qui s&apos;implique vraiment dans votre croissance — on a envie de vous parler.
               </p>
-              <a
-              href={WHATSAPP_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/request-a-quote"
                 className="inline-flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.08em] text-[#D4AF37] hover:text-[#B8960C] transition-colors duration-200 group"
               >
                 Réserver un appel avec l&apos;équipe
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-              </a>
+              </Link>
             </div>
           </AnimatedSection>
         </div>

@@ -4,7 +4,6 @@ import { useState } from 'react'
 import AnimatedSection from './AnimatedSection'
 import Link from 'next/link'
 import { ArrowRight, ChevronDown } from 'lucide-react'
-import { WHATSAPP_BOOKING_URL } from '@/lib/constants'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const services = [
@@ -51,9 +50,7 @@ export default function ServicesSection() {
               </p>
               <div className="hidden lg:block">
                 <Link
-                  href={WHATSAPP_BOOKING_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/request-a-quote"
                   className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-md bg-white text-[#0B0B0B] hover:bg-[#D4AF37] font-semibold text-[13px] uppercase tracking-[0.06em] transition-all duration-300 group"
                 >
                   Démarrer mon projet
@@ -136,9 +133,7 @@ export default function ServicesSection() {
             {/* Mobile CTA */}
             <div className="mt-8 lg:hidden">
               <Link
-                href={WHATSAPP_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/request-a-quote"
                 className="inline-flex items-center justify-center w-full gap-2.5 px-6 py-4 rounded-md bg-white text-[#0B0B0B] hover:bg-[#D4AF37] font-semibold text-[13px] uppercase tracking-[0.06em] transition-all duration-300"
               >
                 Démarrer mon projet

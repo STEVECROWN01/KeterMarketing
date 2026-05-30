@@ -4,7 +4,6 @@ import AnimatedSection from './AnimatedSection'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
-import { WHATSAPP_BOOKING_URL } from '@/lib/constants'
 
 export default function CTASection() {
   return (
@@ -22,13 +21,13 @@ export default function CTASection() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
-              <Link href={WHATSAPP_BOOKING_URL} target="_blank" rel="noopener noreferrer">
+              <Link href="/request-a-quote">
                 <Button className="bg-[#0B0B0B] hover:bg-[#1A1A1A] text-white rounded-md px-8 py-4 text-[14px] font-semibold uppercase tracking-[0.06em] transition-all duration-300 h-auto min-w-[260px]">
                   Réserver mon appel gratuit
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Link href="#portfolio">
+              <Link href="/our-work">
                 <Button
                   variant="outline"
                   className="border-[#0B0B0B]/20 text-[#0B0B0B] hover:bg-[#0B0B0B] hover:text-white rounded-md px-8 py-4 text-[14px] font-medium uppercase tracking-[0.06em] transition-all duration-300 h-auto min-w-[260px] bg-transparent"

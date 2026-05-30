@@ -77,7 +77,7 @@ export default function VideoSection() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8">
-              <Link href={WHATSAPP_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="sm:flex-1">
+              <Link href="/request-a-quote" className="sm:flex-1">
                 <Button className="w-full bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] rounded-md py-4 text-[13px] font-semibold uppercase tracking-[0.06em] transition-all duration-300 h-auto">
                   Réserver un appel
                 </Button>

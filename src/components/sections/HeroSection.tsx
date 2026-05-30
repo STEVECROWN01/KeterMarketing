@@ -2,7 +2,6 @@
 
 import { ImageCarouselHero } from '@/components/ui/ai-image-generator-hero'
 import { Star, Award, Zap, Clock } from 'lucide-react'
-import { WHATSAPP_BOOKING_URL } from '@/lib/constants'
 
 const heroImages = [
   {
@@ -69,7 +68,7 @@ export default function HeroSection() {
       ctaText="Réserver un appel"
       ctaSecondaryText="Voir nos réalisations"
       onCtaClick={() => {
-        window.open(WHATSAPP_BOOKING_URL, '_blank')
+        window.location.href = '/request-a-quote'
       }}
       onSecondaryCtaClick={() => {
         const el = document.querySelector('#portfolio')

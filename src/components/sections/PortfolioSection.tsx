@@ -4,7 +4,6 @@ import Image from 'next/image'
 import AnimatedSection from './AnimatedSection'
 import { ArrowRight, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
-import { WHATSAPP_QUOTE_URL } from '@/lib/constants'
 
 const projects = [
   {
@@ -53,9 +52,7 @@ export default function PortfolioSection() {
               </h2>
             </div>
             <Link
-              href={WHATSAPP_QUOTE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/request-a-quote"
               className="inline-flex items-center gap-2 text-[14px] font-semibold uppercase tracking-[0.08em] text-[#D4AF37] hover:text-[#B8960C] transition-colors duration-200 group shrink-0"
             >
               Obtenir un devis

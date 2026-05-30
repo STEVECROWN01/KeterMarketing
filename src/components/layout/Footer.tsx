@@ -39,18 +39,18 @@ function WhatsAppIcon({ className = '' }: { className?: string }) {
 /* ── Data ── */
 
 const services = [
-  { title: 'Création de site web', href: '#services' },
-  { title: 'Landing page', href: '#services' },
-  { title: 'Refonte de site', href: '#services' },
-  { title: 'Copywriting', href: '#services' },
+  { title: 'Création de site web', href: '/webdesign' },
+  { title: 'Landing page', href: '/webdesign' },
+  { title: 'Website Management', href: '/website-management' },
+  { title: 'Search Engine Marketing', href: '/search-engine-marketing' },
 ]
 
 const company = [
-  { title: 'Notre Process', href: '#process' },
-  { title: 'Portfolio', href: '#portfolio' },
-  { title: 'À Propos', href: '#about' },
-  { title: 'FAQ', href: '#faq' },
-  { title: 'Contact', href: 'https://wa.me/2290141360803' },
+  { title: 'Notre Process', href: '/webdesign' },
+  { title: 'Portfolio', href: '/our-work' },
+  { title: 'À Propos', href: '/#about' },
+  { title: 'FAQ', href: '/#faq' },
+  { title: 'Contact', href: '/request-a-quote' },
 ]
 
 const socialLinks = [
