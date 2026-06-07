@@ -26,7 +26,7 @@ const projects = [
     title: 'AfriBayit',
     description: 'Plateforme immobilière Pan-Africaine — Achat, vente & location',
     image: '/portfolio-afribayit.png',
-    url: 'https://afribayit.vercel.app/',
+    url: 'https://afri-bayit.vercel.app/',
     slug: 'afribayit',
     tag: 'Marketplace',
   },

@@ -55,7 +55,7 @@ const projects: Record<string, {
     title: 'AfriBayit',
     category: 'Marketplace',
     tags: ['UI Design', 'UX Design', 'Marketplace'],
-    url: 'https://afribayit.vercel.app/',
+    url: 'https://afri-bayit.vercel.app/',
     image: '/portfolio-afribayit.png',
     description: 'AfriBayit est une marketplace immobilière pan-africaine permettant l\'achat, la vente et la location de biens immobiliers à travers l\'Afrique. La plateforme vise à fluidifier et sécuriser les transactions immobilières sur le continent.',
     process: [
