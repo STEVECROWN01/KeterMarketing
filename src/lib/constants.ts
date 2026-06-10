@@ -16,3 +16,6 @@ export const WHATSAPP_CONTACT_URL = 'https://wa.me/2290141360803'
 // Quote request — pre-filled WhatsApp message for project quote
 export const WHATSAPP_QUOTE_URL =
   'https://wa.me/2290141360803?text=Bonjour%20Keter%20Marketing%2C%0AJe%20souhaite%20obtenir%20un%20devis%20pour%20mon%20projet.%0AJe%20m%27appelle%20%3A%20%0AType%20de%20projet%20%3A%20%0ABudget%20approximatif%20%3A%20%0AD%C3%A9lai%20souhait%C3%A9%20%3A%20'
+
+// Vimeo video URL for the presentation video
+export const VIMEO_VIDEO_URL = 'https://player.vimeo.com/video/949795514'

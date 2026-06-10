@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
@@ -37,6 +38,12 @@ const sections = [
 ]
 
 export default function PrivacyPolicyPage() {
+  const [dateStr] = useState(() =>
+    typeof window !== 'undefined'
+      ? new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
+      : ''
+  )
+
   return (
     <div className="min-h-screen flex flex-col bg-[#0B0B0B]">
       <Navbar />
@@ -51,7 +58,7 @@ export default function PrivacyPolicyPage() {
                 Politique de Confidentialité
               </h1>
               <p className="text-white/40 text-sm">
-                Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+                Dernière mise à jour : {dateStr || '…'}
               </p>
             </AnimatedSection>
           </div>

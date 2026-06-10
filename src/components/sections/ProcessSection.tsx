@@ -1,9 +1,8 @@
 'use client'
 
 import AnimatedSection from './AnimatedSection'
-import { Users, Palette, PenTool, Code, Rocket } from 'lucide-react'
+import { Users, Palette, PenTool, Code, Rocket, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 
 const steps = [
   {

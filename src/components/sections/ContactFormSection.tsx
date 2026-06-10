@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type FormEvent, type ChangeEvent } from 'react'
 import AnimatedSection from './AnimatedSection'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -38,12 +38,19 @@ export default function ContactFormSection() {
   })
   const [status, setStatus] = useState<FormStatus>('idle')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
+
+    // Custom validation for the Select field (Radix Select doesn't support native required)
+    if (!formData.referral) {
+      alert('Veuillez sélectionner comment vous nous avez connus.')
+      return
+    }
+
     setStatus('submitting')
 
     try {
@@ -304,7 +311,7 @@ export default function ContactFormSection() {
                   <Button
                     type="submit"
                     disabled={status === 'submitting'}
-                    className="w-full bg-[#D4AF37] hover:bg-[#C4A030] text-[#0B0B0B] rounded-full h-13 text-[15px] font-semibold tracking-wide transition-all duration-300 mt-2 cursor-pointer"
+                    className="w-full bg-[#D4AF37] hover:bg-[#C4A030] text-[#0B0B0B] rounded-full h-14 text-[15px] font-semibold tracking-wide transition-all duration-300 mt-2 cursor-pointer"
                   >
                     {status === 'submitting' ? (
                       <>

@@ -1,21 +1,30 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import AnimatedSection from './AnimatedSection'
 import { ArrowRight } from 'lucide-react'
+import { WHATSAPP_CONTACT_URL } from '@/lib/constants'
 
 export default function LeadMagnetSection() {
   const [formData, setFormData] = useState({ name: '', email: '' })
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     if (!formData.name || !formData.email) return
+
+    // Validate email format before redirecting to WhatsApp
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      alert('Veuillez entrer une adresse email valide.')
+      return
+    }
+
     // Redirect to WhatsApp with pre-filled message
     const msg = encodeURIComponent(
       `Bonjour, je m'appelle ${formData.name} (${formData.email}). Je souhaite recevoir la checklist gratuite d'audit de site web.`
     )
-    window.open(`https://wa.me/2290141360803?text=${msg}`, '_blank')
+    window.open(`${WHATSAPP_CONTACT_URL}?text=${msg}`, '_blank')
     setSubmitted(true)
   }
 

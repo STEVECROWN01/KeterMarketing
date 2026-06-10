@@ -1,6 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
+import { WHATSAPP_CONTACT_URL } from '@/lib/constants'
 
 /* ── Official brand SVG icons ── */
 
@@ -73,7 +75,7 @@ const socialLinks = [
   },
   {
     icon: <WhatsAppIcon className="size-4" />,
-    link: 'https://wa.me/2290141360803',
+    link: WHATSAPP_CONTACT_URL,
     label: 'WhatsApp',
     hoverColor: 'hover:text-[#25D366] hover:border-[#25D366]/40',
   },
@@ -93,7 +95,7 @@ export default function Footer() {
         <div className="grid max-w-5xl grid-cols-6 gap-6 p-6 md:p-8">
           {/* Left column — Logo, tagline, social */}
           <div className="col-span-6 flex flex-col gap-5 md:col-span-4">
-            <a href="#hero" className="w-max">
+            <Link href="/" className="w-max">
               <Image
                 src="/keter-logo.png"
                 alt="Keter Marketing"
@@ -102,7 +104,7 @@ export default function Footer() {
                 className="h-7 w-auto opacity-30 hover:opacity-60 transition-opacity duration-300"
                 priority
               />
-            </a>
+            </Link>
             <p className="text-white/30 max-w-sm font-mono text-sm text-balance leading-relaxed">
               La Couronne. Des sites web stratégiques qui génèrent de vrais clients — pas juste des visiteurs. Copywriting intégré. Résultats mesurables.
             </p>
@@ -129,13 +131,13 @@ export default function Footer() {
             </span>
             <div className="flex flex-col gap-0.5">
               {services.map(({ href, title }, i) => (
-                <a
+                <Link
                   key={i}
                   className="w-max py-1 text-sm text-white/40 duration-200 hover:text-[#D4AF37] hover:underline"
                   href={href}
                 >
                   {title}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -147,17 +149,17 @@ export default function Footer() {
             </span>
             <div className="flex flex-col gap-0.5">
               {company.map(({ href, title }, i) => (
-                <a
+                <Link
                   key={i}
                   className="w-max py-1 text-sm text-white/40 duration-200 hover:text-[#D4AF37] hover:underline"
                   href={href}
                 >
                   {title}
-                </a>
+                </Link>
               ))}
               <a
                 className="w-max py-1 text-sm text-white/40 duration-200 hover:text-[#25D366] hover:underline"
-                href="https://wa.me/2290141360803"
+                href={WHATSAPP_CONTACT_URL}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -175,12 +177,12 @@ export default function Footer() {
           <p className="text-white/15 font-mono text-xs tracking-wide">
             © {year} Keter Marketing — La Couronne. Tous droits réservés.
           </p>
-          <a
+          <Link
             href="/privacy-policy"
             className="text-white/15 font-mono text-xs tracking-wide hover:text-white/40 transition-colors"
           >
             Politique de confidentialité
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

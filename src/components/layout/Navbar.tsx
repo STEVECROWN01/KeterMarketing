@@ -2,10 +2,11 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { MenuToggleIcon } from '@/components/ui/menu-toggle-icon';
-import { useScroll } from '@/components/ui/use-scroll';
+import { useScroll } from '@/hooks/use-scroll';
 
 const navLinks = [
   { label: 'Notre Process', href: '/webdesign' },
@@ -49,7 +50,7 @@ export default function Navbar() {
         )}
       >
         {/* Logo */}
-        <a href="#hero" className="flex items-center shrink-0">
+        <Link href="/" className="flex items-center shrink-0">
           <Image
             src="/keter-logo.png"
             alt="Keter Marketing"
@@ -58,12 +59,12 @@ export default function Navbar() {
             className="h-7 md:h-8 w-auto"
             priority
           />
-        </a>
+        </Link>
 
         {/* Desktop nav links + CTA */}
         <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link, i) => (
-            <a
+            <Link
               key={i}
               className={buttonVariants({
                 variant: 'ghost',
@@ -72,13 +73,13 @@ export default function Navbar() {
               href={link.href}
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <Button
             asChild
             className="ml-2 bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] font-semibold text-[12px] uppercase tracking-[0.08em] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300"
           >
-            <a href="/request-a-quote">Démarrer mon projet</a>
+            <Link href="/request-a-quote">Démarrer mon projet</Link>
           </Button>
         </div>
 
@@ -109,7 +110,7 @@ export default function Navbar() {
         >
           <div className="grid gap-y-1">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 className={buttonVariants({
                   variant: 'ghost',
@@ -119,7 +120,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="flex flex-col gap-3">
@@ -127,9 +128,9 @@ export default function Navbar() {
               asChild
               className="w-full bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] font-semibold text-[13px] uppercase tracking-[0.08em] hover:shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300"
             >
-              <a href="/request-a-quote" onClick={() => setOpen(false)}>
+              <Link href="/request-a-quote" onClick={() => setOpen(false)}>
                 Démarrer mon projet
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

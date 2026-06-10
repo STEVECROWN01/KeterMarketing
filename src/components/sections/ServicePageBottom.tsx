@@ -7,12 +7,9 @@ import { ArrowRight, ExternalLink, Plus, Minus } from 'lucide-react'
 import { useState } from 'react'
 
 /* ── Mini Portfolio ── */
-const projects = [
-  { title: 'Win Agro Tech', image: '/portfolio-winagrotech.png', slug: 'win-agro-tech', tag: 'Site Vitrine' },
-  { title: 'Academia Helm', image: '/portfolio-academiahelm.png', slug: 'academia-helm', tag: 'SaaS / Web App' },
-  { title: 'AfriBayit', image: '/portfolio-afribayit.png', slug: 'afribayit', tag: 'Marketplace' },
-  { title: 'Foncier Facile Afrique', image: '/portfolio-foncierfacile.png', slug: 'foncier-facile-afrique', tag: 'Site Vitrine' },
-]
+import { portfolioList } from '@/lib/data'
+
+const projects = portfolioList
 
 /* ── Services ── */
 const services = [
@@ -65,7 +62,7 @@ const faqs = [
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false)
   return (
-    <div className="border-b border-white/8 py-5">
+    <div className="border-b border-white/[0.08] py-5">
       <button
         onClick={() => setOpen(!open)}
         className="w-full flex items-start justify-between gap-4 text-left group"
@@ -107,7 +104,7 @@ export default function ServicePageBottom() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {projects.map((p) => (
               <AnimatedSection key={p.slug}>
-                <div className="group rounded-xl overflow-hidden border border-[#0B0B0B]/8 bg-[#0B0B0B] hover:border-[#D4AF37]/30 transition-all duration-300">
+                <div className="group rounded-xl overflow-hidden border border-[#0B0B0B]/[0.08] bg-[#0B0B0B] hover:border-[#D4AF37]/30 transition-all duration-300">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={p.image}
@@ -117,7 +114,7 @@ export default function ServicePageBottom() {
                     />
                     <div className="absolute inset-0 bg-[#0B0B0B]/0 group-hover:bg-[#0B0B0B]/40 transition-colors duration-300" />
                     <span className="absolute top-3 left-3 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-[#D4AF37] text-[#0B0B0B] rounded-full">
-                      {p.tag}
+                      {p.category}
                     </span>
                   </div>
                   <div className="p-3 bg-white flex items-center justify-between gap-2">
@@ -149,7 +146,7 @@ export default function ServicePageBottom() {
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </AnimatedSection>
-          <div className="divide-y divide-white/8">
+          <div className="divide-y divide-white/[0.08]">
             {services.map((s) => (
               <AnimatedSection key={s.href}>
                 <Link

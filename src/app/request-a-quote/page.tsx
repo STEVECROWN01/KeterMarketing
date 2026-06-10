@@ -1,44 +1,19 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
 import { Star } from 'lucide-react'
 
+const items = [
+  { text: 'Obtenez plus de trafic de recherche' },
+  { text: 'Convertissez vos visiteurs en prospects' },
+  { text: 'Rendez votre image de marque exceptionnelle' },
+]
+
 export default function RequestQuotePage() {
-  const [injected, setInjected] = useState(false)
-
-  useEffect(() => {
-    // We replicate the exact same lazy injection mechanism as Sher Agency!
-    // Since LeadConnector / MsgSndr is an external iframe tool, we embed it directly.
-    // If the user wants to test it, we'll embed the Keter form or keep it fully clean
-    // and responsive with a fallback or directly load the custom identical form.
-    // Let's implement the EXACT SAME lazy injection widget markup structure as Sher!
-    const injectForm = () => {
-      if (injected) return
-      setInjected(true)
-    }
-
-    const events = ['scroll', 'mousemove', 'touchstart', 'keydown']
-    events.forEach((evt) => {
-      window.addEventListener(evt, injectForm, { once: true })
-    })
-
-    return () => {
-      events.forEach((evt) => {
-        window.removeEventListener(evt, injectForm)
-      })
-    }
-  }, [injected])
-
-  const items = [
-    { text: 'Obtenez plus de trafic de recherche' },
-    { text: 'Convertissez vos visiteurs en prospects' },
-    { text: 'Rendez votre image de marque exceptionnelle' },
-  ]
-
   return (
     <div className="min-h-screen flex flex-col bg-[#0B0B0B]">
       <Navbar />
@@ -50,7 +25,7 @@ export default function RequestQuotePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-[45%_1fr] gap-16 lg:gap-24 items-start">
               
-              {/* LEFT — Title + Checks + Badges (Sher Agency Quote Page style) */}
+              {/* LEFT — Title + Checks + Badges */}
               <AnimatedSection className="lg:sticky lg:top-28">
                 <h1 className="text-[32px] sm:text-[42px] md:text-[50px] font-semibold leading-[1.1] text-white mb-6">
                   Optimisez votre site pour <strong>booster vos ventes</strong>
@@ -75,7 +50,7 @@ export default function RequestQuotePage() {
                 <div className="flex items-center gap-6 border-t border-white/10 pt-8 max-w-md">
                   <div className="flex items-center gap-2">
                     <div className="w-9 h-9 bg-white/[0.04] border border-white/10 rounded flex items-center justify-center">
-                      <Star className="w-5.5 h-5.5 fill-[#D4AF37] text-[#D4AF37]" />
+                      <Star className="size-[22px] fill-[#D4AF37] text-[#D4AF37]" />
                     </div>
                     <div>
                       <p className="text-white text-xs font-bold font-mono leading-none">5.0 / 5.0</p>
@@ -95,19 +70,21 @@ export default function RequestQuotePage() {
                 </div>
               </AnimatedSection>
 
-              {/* RIGHT — Formulaire LeadConnector chargé en lazy */}
+              {/* RIGHT — Formulaire LeadConnector */}
               <AnimatedSection delay={0.15}>
-                <iframe
-                  src="https://api.leadconnectorhq.com/widget/form/KAY778x3PVdeb4J8MnJq"
-                  style={{ width: '100%', height: '1220px', border: 'none' }}
-                  id="inline-KAY778x3PVdeb4J8MnJq"
-                  data-layout="{'id':'INLINE'}"
-                  data-trigger-type="alwaysShow"
-                  data-activation-type="alwaysActivated"
-                  data-form-name="Nouvelle Demande Client"
-                  title="Nouvelle Demande Client"
-                  scrolling="no"
-                />
+                <div className="w-full">
+                  <iframe
+                    src="https://api.leadconnectorhq.com/widget/form/KAY778x3PVdeb4J8MnJq"
+                    style={{ width: '100%', minHeight: '600px', maxHeight: '1220px', border: 'none' }}
+                    id="inline-KAY778x3PVdeb4J8MnJq"
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-activation-type="alwaysActivated"
+                    data-form-name="Nouvelle Demande Client"
+                    title="Nouvelle Demande Client"
+                    scrolling="auto"
+                  />
+                </div>
               </AnimatedSection>
 
             </div>

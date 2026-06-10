@@ -4,8 +4,8 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
-import Link from 'next/link'
 import { ArrowRight, Briefcase, Sparkles, Star, Zap, Heart, ExternalLink } from 'lucide-react'
+import { WHATSAPP_CONTACT_URL } from '@/lib/constants'
 
 const jobs = [
   {
@@ -99,7 +99,7 @@ export default function CareersPage() {
             <div className="space-y-5">
               {jobs.map((job) => (
                 <AnimatedSection key={job.id}>
-                  <div className="group p-6 md:p-8 rounded-xl border border-white/8 bg-white/[0.02] hover:border-[#D4AF37]/30 transition-all duration-300">
+                  <div className="group p-6 md:p-8 rounded-xl border border-white/[0.08] bg-white/[0.02] hover:border-[#D4AF37]/30 transition-all duration-300">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                       <div>
                         <div className="flex items-center gap-3 mb-2">
@@ -115,7 +115,7 @@ export default function CareersPage() {
                         </div>
                       </div>
                       <a
-                        href={`https://wa.me/2290141360803?text=Bonjour, je souhaite postuler pour le poste de ${encodeURIComponent(job.title)} chez Keter Marketing.`}
+                        href={`${WHATSAPP_CONTACT_URL}?text=Bonjour, je souhaite postuler pour le poste de ${encodeURIComponent(job.title)} chez Keter Marketing.`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md border border-[#D4AF37]/40 text-[#D4AF37] text-sm font-semibold hover:bg-[#D4AF37]/10 transition-colors whitespace-nowrap group/btn"
@@ -167,7 +167,7 @@ export default function CareersPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {values.map((v, i) => (
                 <AnimatedSection key={i}>
-                  <div className="p-6 rounded-xl border border-white/8 bg-white/[0.02] hover:border-[#D4AF37]/20 transition-colors duration-300 h-full">
+                  <div className="p-6 rounded-xl border border-white/[0.08] bg-white/[0.02] hover:border-[#D4AF37]/20 transition-colors duration-300 h-full">
                     <div className="w-10 h-10 rounded-md bg-[#D4AF37]/10 flex items-center justify-center mb-4">
                       {v.icon}
                     </div>
@@ -192,7 +192,7 @@ export default function CareersPage() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
-                  href="https://wa.me/2290141360803?text=Bonjour, je souhaite postuler pour un poste chez Keter Marketing."
+                  href={`${WHATSAPP_CONTACT_URL}?text=Bonjour, je souhaite postuler pour un poste chez Keter Marketing.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2.5 px-8 py-4 rounded-md bg-[#D4AF37] hover:bg-[#B8960C] text-[#0B0B0B] font-semibold text-[14px] uppercase tracking-[0.06em] transition-all duration-300 group"

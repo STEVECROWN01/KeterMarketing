@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { Play, Clock, X, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import AnimatedSection from './AnimatedSection'
-import { WHATSAPP_BOOKING_URL } from '@/lib/constants'
+import { VIMEO_VIDEO_URL } from '@/lib/constants'
 
 export default function VideoSection() {
   const [isOpen, setIsOpen] = useState(false)
@@ -97,7 +97,7 @@ export default function VideoSection() {
               {/* Clutch Review Style */}
               <div className="flex items-center gap-2">
                 <div className="w-9 h-9 bg-white/[0.04] border border-white/10 rounded flex items-center justify-center">
-                  <Star className="w-5.5 h-5.5 fill-[#D4AF37] text-[#D4AF37]" />
+                  <Star className="size-[22px] fill-[#D4AF37] text-[#D4AF37]" />
                 </div>
                 <div>
                   <p className="text-white text-xs font-bold font-mono leading-none">5.0 / 5.0</p>
@@ -150,7 +150,7 @@ export default function VideoSection() {
 
               {/* Embedded Video */}
               <iframe
-                src="https://player.vimeo.com/video/949795514?autoplay=1&muted=0"
+                src={`${VIMEO_VIDEO_URL}?autoplay=1&muted=0`}
                 className="w-full h-full"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen

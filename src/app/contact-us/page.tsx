@@ -6,6 +6,7 @@ import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
 import Link from 'next/link'
 import { ArrowRight, Mail, Clock, MessageSquare, Phone } from 'lucide-react'
+import { WHATSAPP_CONTACT_URL } from '@/lib/constants'
 
 export default function ContactUsPage() {
   return (
@@ -41,7 +42,7 @@ export default function ContactUsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
               {/* Clients existants */}
-              <AnimatedSection className="p-6 rounded-xl border border-white/8 bg-white/[0.02] hover:border-[#D4AF37]/30 transition-colors duration-300">
+              <AnimatedSection className="p-6 rounded-xl border border-white/[0.08] bg-white/[0.02] hover:border-[#D4AF37]/30 transition-colors duration-300">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-9 h-9 rounded-md bg-[#D4AF37]/10 flex items-center justify-center">
                     <Clock className="w-4 h-4 text-[#D4AF37]" />
@@ -60,7 +61,7 @@ export default function ContactUsPage() {
                     support@ketermarketing.com
                   </a>
                   <a
-                    href="https://wa.me/2290141360803"
+                    href={WHATSAPP_CONTACT_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-white/40 text-sm hover:text-[#25D366] transition-colors"
@@ -72,7 +73,7 @@ export default function ContactUsPage() {
               </AnimatedSection>
 
               {/* Clients potentiels */}
-              <AnimatedSection className="p-6 rounded-xl border border-white/8 bg-white/[0.02] hover:border-[#D4AF37]/30 transition-colors duration-300">
+              <AnimatedSection className="p-6 rounded-xl border border-white/[0.08] bg-white/[0.02] hover:border-[#D4AF37]/30 transition-colors duration-300">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-9 h-9 rounded-md bg-[#D4AF37]/10 flex items-center justify-center">
                     <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
@@ -92,7 +93,7 @@ export default function ContactUsPage() {
               </AnimatedSection>
 
               {/* Candidatures */}
-              <AnimatedSection className="p-6 rounded-xl border border-white/8 bg-white/[0.02] hover:border-[#D4AF37]/30 transition-colors duration-300">
+              <AnimatedSection className="p-6 rounded-xl border border-white/[0.08] bg-white/[0.02] hover:border-[#D4AF37]/30 transition-colors duration-300">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-9 h-9 rounded-md bg-[#D4AF37]/10 flex items-center justify-center">
                     <MessageSquare className="w-4 h-4 text-[#D4AF37]" />
@@ -127,7 +128,7 @@ export default function ContactUsPage() {
             </AnimatedSection>
 
             <div className="max-w-2xl mx-auto">
-              <div className="rounded-2xl border border-white/8 bg-white/[0.02] overflow-hidden">
+              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] overflow-hidden">
                 <iframe
                   src="https://api.leadconnectorhq.com/widget/form/j9xiCG9t4Z9AzEAI6Mqf"
                   style={{ width: '100%', height: '600px', border: 'none', borderRadius: '0' }}

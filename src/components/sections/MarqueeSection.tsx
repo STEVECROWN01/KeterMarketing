@@ -9,14 +9,6 @@ const clients = [
   'Agence Formation Lomé',
   'Services IT Abidjan',
   'Coach Business Cotonou',
-  'Win Agro Tech',
-  'Academia Helm',
-  'AfriBayit',
-  'Foncier Facile Afrique',
-  'PME BTP Parakou',
-  'Agence Formation Lomé',
-  'Services IT Abidjan',
-  'Coach Business Cotonou',
 ]
 
 export default function MarqueeSection() {

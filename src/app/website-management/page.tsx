@@ -6,7 +6,7 @@ import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
 import ServicePageBottom from '@/components/sections/ServicePageBottom'
 import Link from 'next/link'
-import { ArrowRight, Shield, RefreshCw, Cpu, HelpCircle, Check } from 'lucide-react'
+import { ArrowRight, Shield, RefreshCw, Cpu, HelpCircle } from 'lucide-react'
 
 const features = [
   {

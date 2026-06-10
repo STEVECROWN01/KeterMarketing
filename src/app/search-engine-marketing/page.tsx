@@ -6,7 +6,7 @@ import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
 import ServicePageBottom from '@/components/sections/ServicePageBottom'
 import Link from 'next/link'
-import { ArrowRight, Search, BarChart3, Target, Award, TrendingUp } from 'lucide-react'
+import { ArrowRight, Search, Target } from 'lucide-react'
 
 export default function SearchEngineMarketingPage() {
   return (
@@ -103,7 +103,7 @@ export default function SearchEngineMarketingPage() {
                 { value: '5 étoiles', label: 'Avis clients vérifiés' },
               ].map((stat, i) => (
                 <AnimatedSection key={i}>
-                  <div className="p-5 rounded-xl border border-white/8 bg-white/[0.02] text-center hover:border-[#D4AF37]/20 transition-colors">
+                  <div className="p-5 rounded-xl border border-white/[0.08] bg-white/[0.02] text-center hover:border-[#D4AF37]/20 transition-colors">
                     <p className="text-2xl md:text-3xl font-bold text-[#D4AF37] mb-1">{stat.value}</p>
                     <p className="text-white/40 text-xs leading-snug">{stat.label}</p>
                   </div>

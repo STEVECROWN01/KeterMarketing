@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { db } from '@/lib/db'
 
 interface ContactPayload {
   fullName: string
@@ -31,22 +32,25 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // In production, you would:
-    // 1. Send an email notification (e.g., via Resend, SendGrid)
-    // 2. Save to a database (e.g., via Prisma)
-    // 3. Send a WhatsApp notification to the team
-    // For now, we log it and return success
-
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
-    console.log('📩 New Contact Form Submission')
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
-    console.log(`Name:    ${fullName}`)
-    console.log(`Phone:   ${phone}`)
-    console.log(`Email:   ${email}`)
-    console.log(`Company: ${company}`)
-    console.log(`Source:  ${referral}`)
-    console.log(`Message: ${message}`)
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+    // Save to database
+    try {
+      await db.contactSubmission.create({
+        data: {
+          fullName,
+          phone,
+          email,
+          company,
+          referral,
+          message,
+        },
+      })
+    } catch (dbError) {
+      console.error('Database save failed:', dbError)
+      // Fall back to structured logging if DB is unavailable
+      console.info('Contact form submission (DB unavailable)', {
+        fullName, phone, email, company, referral, message,
+      })
+    }
 
     return NextResponse.json(
       {

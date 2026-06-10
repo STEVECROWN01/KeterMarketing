@@ -13,6 +13,7 @@ import ProcessSection from '@/components/sections/ProcessSection'
 import PortfolioSection from '@/components/sections/PortfolioSection'
 import StatsSection from '@/components/sections/StatsSection'
 import LeadMagnetSection from '@/components/sections/LeadMagnetSection'
+import AboutSection from '@/components/sections/AboutSection'
 import TeamSection from '@/components/sections/TeamSection'
 import FAQSection from '@/components/sections/FAQSection'
 import CTASection from '@/components/sections/CTASection'
@@ -45,6 +46,9 @@ export default function Home() {
 
         {/* 8 — Portfolio / "Websites We Created" */}
         <PortfolioSection />
+
+        {/* 9 — À Propos / About & Philosophy */}
+        <AboutSection />
 
         {/* 10 — Chiffres clés (Sher: stats section) */}
         <StatsSection />

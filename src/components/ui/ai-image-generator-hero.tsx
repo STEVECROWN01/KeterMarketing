@@ -15,7 +15,6 @@ interface ImageCard {
 
 interface ImageCarouselHeroProps {
   title: React.ReactNode
-  subtitle: string
   description: React.ReactNode
   ctaText: string
   ctaSecondaryText?: string
@@ -99,7 +98,7 @@ export function ImageCarouselHero({
               
               // Responsive radius based on viewport width
               // On desktop/large tablet, radius is 260px. On smaller screens, radius shrinks dynamically to prevent horizontal overflow.
-              const radius = typeof window !== 'undefined' && window.innerWidth < 640 ? 140 : 260
+              const radius = 260
               
               const x = Math.cos(angle) * radius
               const y = Math.sin(angle) * radius * 0.4 // Flatten for horizontal ellipse

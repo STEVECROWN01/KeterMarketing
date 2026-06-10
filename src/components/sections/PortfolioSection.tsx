@@ -4,41 +4,7 @@ import Image from 'next/image'
 import AnimatedSection from './AnimatedSection'
 import { ExternalLink, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-
-const projects = [
-  {
-    title: 'Win Agro Tech',
-    description: 'Agri Tech Solutions — Formation, élevage & vente de volailles au Bénin',
-    image: '/portfolio-winagrotech.png',
-    url: 'https://www.winagrotech.com/',
-    slug: 'win-agro-tech',
-    tag: 'Site Vitrine',
-  },
-  {
-    title: 'Academia Helm',
-    description: 'Plateforme de pilotage éducatif nouvelle génération pour l\'Afrique',
-    image: '/portfolio-academiahelm.png',
-    url: 'https://www.academiahelm.com/',
-    slug: 'academia-helm',
-    tag: 'SaaS / Web App',
-  },
-  {
-    title: 'AfriBayit',
-    description: 'Plateforme immobilière Pan-Africaine — Achat, vente & location',
-    image: '/portfolio-afribayit.png',
-    url: 'https://afri-bayit.vercel.app/',
-    slug: 'afribayit',
-    tag: 'Marketplace',
-  },
-  {
-    title: 'Foncier Facile Afrique',
-    description: 'Achat de terrains sécurisés au Bénin — Simplification foncière',
-    image: '/portfolio-foncierfacile.png',
-    url: 'https://www.foncierfacileafrique.fr/',
-    slug: 'foncier-facile-afrique',
-    tag: 'Site Vitrine',
-  },
-]
+import { projects as projectsData } from '@/lib/data'
 
 export default function PortfolioSection() {
   return (
@@ -70,7 +36,7 @@ export default function PortfolioSection() {
         {/* 2×2 Grid */}
         <AnimatedSection delay={0.15}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {projects.map((project, i) => (
+            {Object.values(projectsData).map((project, i) => (
               <div
                 key={i}
                 className="group relative rounded-2xl overflow-hidden bg-[#0B0B0B] border border-[#0B0B0B]/5 hover:border-[#D4AF37]/30 transition-all duration-300 shadow-sm"
@@ -94,7 +60,7 @@ export default function PortfolioSection() {
                   {/* Tag */}
                   <div className="absolute top-4 left-4">
                     <span className="inline-block px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.1em] bg-[#D4AF37] text-[#0B0B0B] rounded-full">
-                      {project.tag}
+                      {project.category}
                     </span>
                   </div>
 
