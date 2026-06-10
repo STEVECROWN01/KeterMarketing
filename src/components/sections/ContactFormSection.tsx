@@ -37,6 +37,7 @@ export default function ContactFormSection() {
     message: '',
   })
   const [status, setStatus] = useState<FormStatus>('idle')
+  const [referralError, setReferralError] = useState('')
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -47,9 +48,10 @@ export default function ContactFormSection() {
 
     // Custom validation for the Select field (Radix Select doesn't support native required)
     if (!formData.referral) {
-      alert('Veuillez sélectionner comment vous nous avez connus.')
+      setReferralError('Veuillez sélectionner comment vous nous avez connus.')
       return
     }
+    setReferralError('')
 
     setStatus('submitting')
 
@@ -281,6 +283,9 @@ export default function ContactFormSection() {
                         </SelectItem>
                       </SelectContent>
                     </Select>
+                    {referralError && (
+                      <p className="text-red-400 text-xs mt-1">{referralError}</p>
+                    )}
                   </div>
 
                   {/* Row 4: Message (full-width textarea) */}

@@ -154,6 +154,7 @@ export default function VideoSection() {
                 className="w-full h-full"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
+                title="Vidéo de présentation Keter Marketing"
               />
             </motion.div>
           </motion.div>

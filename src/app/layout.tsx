@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -10,6 +10,12 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0B0B0B",
+};
 
 export const metadata: Metadata = {
   title: "Keter Marketing — Sites Web Stratégiques qui Convertissent | Cotonou",
@@ -36,6 +42,14 @@ export const metadata: Metadata = {
     siteName: "Keter Marketing",
     type: "website",
     locale: "fr_BJ",
+    images: [
+      {
+        url: "/keter-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Keter Marketing — Sites Web Stratégiques",
+      },
+    ],
   },
   alternates: {
     canonical: "https://ketermarketing.com",

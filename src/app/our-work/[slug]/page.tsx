@@ -13,6 +13,11 @@ import { projects, portfolioList } from '@/lib/data'
 
 const allProjects = portfolioList
 
+// Provide static params for all known project slugs
+export function generateStaticParams() {
+  return Object.keys(projects).map((slug) => ({ slug }))
+}
+
 export default function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params)
   const project = projects[slug]

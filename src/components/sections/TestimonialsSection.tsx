@@ -70,6 +70,31 @@ export default function TestimonialsSection() {
     return () => clearInterval(interval)
   }, [next])
 
+  // Calculate visible cards based on screen size (handled by CSS, but we compute offset in JS)
+  const getVisibleCount = () => {
+    if (typeof window === 'undefined') return 1
+    if (window.innerWidth >= 1024) return 3
+    if (window.innerWidth >= 640) return 2
+    return 1
+  }
+
+  const [visibleCount, setVisibleCount] = useState(1)
+
+  useEffect(() => {
+    const update = () => setVisibleCount(getVisibleCount())
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  // Clamp currentIndex so we don't scroll past the last possible starting index
+  const maxIndex = Math.max(0, testimonials.length - visibleCount)
+  const safeIndex = Math.min(currentIndex, maxIndex)
+
+  // Each card's width percentage = 100 / visibleCount, then offset by safeIndex * card width
+  const cardWidthPercent = 100 / visibleCount
+  const gapPx = 20 // gap-5 = 20px
+
   return (
     <section className="bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-36">
@@ -95,7 +120,7 @@ export default function TestimonialsSection() {
             <div
               className="flex transition-transform duration-500 ease-in-out gap-5"
               style={{
-                transform: `translateX(calc(-${currentIndex * 100}% / ${Math.min(testimonials.length, 3)} - ${currentIndex * (20 / Math.min(testimonials.length, 3))}px))`,
+                transform: `translateX(calc(-${safeIndex * cardWidthPercent}% - ${safeIndex * gapPx}px))`,
               }}
             >
               {testimonials.map((t, i) => (
@@ -143,7 +168,7 @@ export default function TestimonialsSection() {
                   key={i}
                   onClick={() => setCurrentIndex(i)}
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === currentIndex ? 'bg-[#0B0B0B] w-8' : 'bg-[#0B0B0B]/20 w-4'
+                    i === safeIndex ? 'bg-[#0B0B0B] w-8' : 'bg-[#0B0B0B]/20 w-4'
                   }`}
                   aria-label={`Avis ${i + 1}`}
                 />

@@ -18,7 +18,6 @@ export default function MarqueeSection() {
         {/* Double the list inside one div for seamless loop */}
         <div
           className="animate-marquee flex whitespace-nowrap shrink-0 min-w-full"
-          aria-hidden="true"
         >
           {[...clients, ...clients].map((client, i) => (
             <span key={i} className="inline-flex items-center gap-3 px-8">

@@ -45,11 +45,8 @@ export async function POST(request: NextRequest) {
         },
       })
     } catch (dbError) {
-      console.error('Database save failed:', dbError)
-      // Fall back to structured logging if DB is unavailable
-      console.info('Contact form submission (DB unavailable)', {
-        fullName, phone, email, company, referral, message,
-      })
+      console.error('Database save failed:', dbError instanceof Error ? dbError.message : 'Unknown error')
+      // Do not log PII to console — the database is the single source of truth
     }
 
     return NextResponse.json(

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
@@ -38,11 +38,13 @@ const sections = [
 ]
 
 export default function PrivacyPolicyPage() {
-  const [dateStr] = useState(() =>
-    typeof window !== 'undefined'
-      ? new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
-      : ''
-  )
+  const [dateStr, setDateStr] = useState('')
+
+  useEffect(() => {
+    const formatted = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
+    // Use requestAnimationFrame to avoid synchronous setState in effect
+    requestAnimationFrame(() => setDateStr(formatted))
+  }, [])
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0B0B0B]">

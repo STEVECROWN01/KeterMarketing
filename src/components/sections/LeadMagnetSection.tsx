@@ -8,6 +8,7 @@ import { WHATSAPP_CONTACT_URL } from '@/lib/constants'
 export default function LeadMagnetSection() {
   const [formData, setFormData] = useState({ name: '', email: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [emailError, setEmailError] = useState('')
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
@@ -16,9 +17,10 @@ export default function LeadMagnetSection() {
     // Validate email format before redirecting to WhatsApp
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
-      alert('Veuillez entrer une adresse email valide.')
+      setEmailError('Veuillez entrer une adresse email valide.')
       return
     }
+    setEmailError('')
 
     // Redirect to WhatsApp with pre-filled message
     const msg = encodeURIComponent(
@@ -79,9 +81,12 @@ export default function LeadMagnetSection() {
                     required
                     placeholder="email@entreprise.com"
                     value={formData.email}
-                    onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
+                    onChange={(e) => { setFormData((p) => ({ ...p, email: e.target.value })); setEmailError('') }}
                     className="w-full h-12 px-4 rounded-lg border border-[#0B0B0B]/15 bg-white text-[#0B0B0B] placeholder:text-[#0B0B0B]/30 focus:outline-none focus:border-[#D4AF37] transition-colors text-sm"
                   />
+                  {emailError && (
+                    <p className="text-red-500 text-xs mt-1">{emailError}</p>
+                  )}
                 </div>
                 <button
                   type="submit"

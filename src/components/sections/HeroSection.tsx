@@ -1,5 +1,6 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { ImageCarouselHero } from '@/components/ui/ai-image-generator-hero'
 import { Star, Award, Zap, Clock } from 'lucide-react'
 
@@ -49,6 +50,8 @@ const heroFeatures = [
 ]
 
 export default function HeroSection() {
+  const router = useRouter()
+
   return (
     <ImageCarouselHero
       title={
@@ -68,7 +71,7 @@ export default function HeroSection() {
       ctaText="Réserver un appel"
       ctaSecondaryText="Voir nos réalisations"
       onCtaClick={() => {
-        window.location.href = '/request-a-quote'
+        router.push('/request-a-quote')
       }}
       onSecondaryCtaClick={() => {
         const el = document.querySelector('#portfolio')

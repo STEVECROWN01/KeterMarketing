@@ -15,7 +15,7 @@ const team = [
     color: 'text-[#D4AF37]',
   },
   {
-    initials: 'ST',
+    initials: 'S',
     name: 'Stevens',
     role: 'Design & Développement',
     description:
