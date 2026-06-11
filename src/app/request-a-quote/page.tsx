@@ -1,6 +1,5 @@
 'use client'
 
-import React from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
@@ -83,6 +82,7 @@ export default function RequestQuotePage() {
                     data-form-name="Nouvelle Demande Client"
                     title="Nouvelle Demande Client"
                     scrolling="auto"
+                    sandbox="allow-scripts allow-forms allow-same-origin"
                   />
                 </div>
               </AnimatedSection>

@@ -48,6 +48,7 @@ export default function Navbar() {
             'md:px-2': scrolled,
           },
         )}
+        aria-label="Navigation principale"
       >
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
@@ -89,6 +90,9 @@ export default function Navbar() {
           variant="outline"
           onClick={() => setOpen(!open)}
           className="md:hidden border-white/15 text-white hover:bg-white/5 hover:border-white/30"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
         >
           <MenuToggleIcon open={open} className="size-5" duration={300} />
         </Button>
@@ -96,10 +100,13 @@ export default function Navbar() {
 
       {/* Mobile menu overlay */}
       <div
+        id="mobile-menu"
         className={cn(
           'bg-[#0B0B0B]/95 backdrop-blur-lg fixed top-16 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y border-white/10 md:hidden',
           open ? 'block' : 'hidden',
         )}
+        role="navigation"
+        aria-label="Menu mobile"
       >
         <div
           data-slot={open ? 'open' : 'closed'}

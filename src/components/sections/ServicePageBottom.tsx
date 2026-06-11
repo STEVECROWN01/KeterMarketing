@@ -59,27 +59,39 @@ const faqs = [
 ]
 
 /* ── FAQ Item ── */
-function FAQItem({ q, a }: { q: string; a: string }) {
+function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
   const [open, setOpen] = useState(false)
+  const panelId = `sp-faq-panel-${index}`
+  const buttonId = `sp-faq-button-${index}`
   return (
     <div className="border-b border-white/[0.08] py-5">
       <button
+        id={buttonId}
         onClick={() => setOpen(!open)}
         className="w-full flex items-start justify-between gap-4 text-left group"
+        aria-expanded={open}
+        aria-controls={panelId}
       >
         <span className="text-white font-medium text-[15px] leading-snug group-hover:text-[#D4AF37] transition-colors">
           {q}
         </span>
-        <span className="shrink-0 mt-0.5">
+        <span className="shrink-0 mt-0.5" aria-hidden="true">
           {open
             ? <Minus className="w-4 h-4 text-[#D4AF37]" />
             : <Plus className="w-4 h-4 text-white/40 group-hover:text-[#D4AF37] transition-colors" />
           }
         </span>
       </button>
-      {open && (
+      <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
         <p className="mt-3 text-white/50 text-sm leading-relaxed">{a}</p>
-      )}
+      </div>
     </div>
   )
 }
@@ -181,7 +193,7 @@ export default function ServicePageBottom() {
           </AnimatedSection>
           <div>
             {faqs.map((faq, i) => (
-              <FAQItem key={i} q={faq.q} a={faq.a} />
+              <FAQItem key={i} q={faq.q} a={faq.a} index={i} />
             ))}
           </div>
         </div>

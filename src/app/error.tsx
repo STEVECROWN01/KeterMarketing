@@ -1,14 +1,19 @@
 'use client'
 
+import { useEffect } from 'react'
 import Link from 'next/link'
 
 export default function Error({
-  error: _error,
+  error,
   reset,
 }: {
   error: Error & { digest?: string }
   reset: () => void
 }) {
+  useEffect(() => {
+    console.error('Application error:', error)
+  }, [error])
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#0B0B0B] px-4 text-center">
       <h1 className="text-6xl md:text-8xl font-bold text-red-500 mb-4">Erreur</h1>

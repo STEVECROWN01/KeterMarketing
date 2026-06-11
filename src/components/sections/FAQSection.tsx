@@ -75,11 +75,16 @@ export default function FAQSection() {
             <div className="flex flex-col">
               {faqs.map((faq, i) => {
                 const isOpen = openIndex === i
+                const panelId = `faq-panel-${i}`
+                const buttonId = `faq-button-${i}`
                 return (
                   <div key={i} className="border-b border-white/10 last:border-b-0">
                     <button
+                      id={buttonId}
                       onClick={() => toggle(i)}
                       className="w-full flex items-start justify-between gap-4 py-6 text-left group"
+                      aria-expanded={isOpen}
+                      aria-controls={panelId}
                     >
                       <h3 className="text-base md:text-[17px] font-medium text-white/80 group-hover:text-white transition-colors duration-200 pr-4 leading-snug">
                         {faq.question}
@@ -90,11 +95,15 @@ export default function FAQSection() {
                             ? 'bg-white border-white text-[#0B0B0B]'
                             : 'border-white/20 text-white/40 group-hover:border-white/40 group-hover:text-white'
                         }`}
+                        aria-hidden="true"
                       >
                         {isOpen ? '−' : '+'}
                       </span>
                     </button>
                     <div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={buttonId}
                       className={`overflow-hidden transition-all duration-300 ease-in-out ${
                         isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                       }`}

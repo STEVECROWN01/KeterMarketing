@@ -20,9 +20,11 @@ export default function VideoSection() {
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* LEFT — Video Thumbnail (55%) */}
           <AnimatedSection className="w-full lg:w-[55%] shrink-0">
-            <div 
+            <button
+              type="button"
               onClick={() => setIsOpen(true)}
-              className="relative group cursor-pointer"
+              className="relative group cursor-pointer w-full text-left"
+              aria-label="Lire la vidéo de présentation"
             >
               <div className="relative w-full aspect-[16/10] rounded-lg overflow-hidden bg-gradient-to-br from-[#1A1A1A] to-[#111] border border-white/5 group-hover:border-[#D4AF37]/30 transition-all duration-500">
                 {/* Subtle grid */}
@@ -61,7 +63,7 @@ export default function VideoSection() {
                   <span className="text-white/60 text-xs font-medium font-mono">1:30</span>
                 </div>
               </div>
-            </div>
+            </button>
           </AnimatedSection>
 
           {/* RIGHT — Text + CTAs (45%) */}
@@ -129,8 +131,11 @@ export default function VideoSection() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Vidéo de présentation"
           >
-            <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
+            <div className="absolute inset-0" onClick={() => setIsOpen(false)} aria-hidden="true" />
             
             <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
@@ -143,7 +148,7 @@ export default function VideoSection() {
               <button 
                 onClick={() => setIsOpen(false)}
                 className="absolute top-4 right-4 p-2 rounded-full bg-black/60 border border-white/10 hover:border-[#D4AF37] hover:text-[#D4AF37] text-white transition-all z-20"
-                aria-label="Fermer"
+                aria-label="Fermer la vidéo"
               >
                 <X className="w-5 h-5" />
               </button>

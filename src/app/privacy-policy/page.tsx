@@ -5,6 +5,7 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
+import { PHONE_NUMBER, EMAIL_CONTACT } from '@/lib/constants'
 
 const sections = [
   {
@@ -33,7 +34,7 @@ const sections = [
   },
   {
     title: '7. Contact',
-    content: `Pour toute question relative à cette politique de confidentialité ou pour exercer vos droits, vous pouvez nous contacter :\n\nKeter Marketing\nCotonou, Bénin, Afrique de l'Ouest\nEmail : contact@ketermarketing.com\nWhatsApp : +229 01 41 36 08 03`,
+    content: `Pour toute question relative à cette politique de confidentialité ou pour exercer vos droits, vous pouvez nous contacter :\n\nKeter Marketing\nCotonou, Bénin, Afrique de l'Ouest\nEmail : ${EMAIL_CONTACT}\nWhatsApp : ${PHONE_NUMBER}`,
   },
 ]
 
@@ -42,8 +43,7 @@ export default function PrivacyPolicyPage() {
 
   useEffect(() => {
     const formatted = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
-    // Use requestAnimationFrame to avoid synchronous setState in effect
-    requestAnimationFrame(() => setDateStr(formatted))
+    setDateStr(formatted)
   }, [])
 
   return (

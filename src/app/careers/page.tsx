@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
 import { ArrowRight, Briefcase, Sparkles, Star, Zap, Heart, ExternalLink } from 'lucide-react'
-import { WHATSAPP_CONTACT_URL } from '@/lib/constants'
+import { WHATSAPP_CONTACT_URL, EMAIL_CONTACT } from '@/lib/constants'
 
 const jobs = [
   {
@@ -201,7 +201,7 @@ export default function CareersPage() {
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
-                  href="mailto:contact@ketermarketing.com?subject=Candidature"
+                  href={`mailto:${EMAIL_CONTACT}?subject=Candidature`}
                   className="inline-flex items-center gap-2.5 px-8 py-4 rounded-md border border-white/15 text-white/70 hover:border-[#D4AF37]/40 hover:text-[#D4AF37] text-[14px] uppercase tracking-[0.06em] transition-all duration-300"
                 >
                   Envoyer par Email

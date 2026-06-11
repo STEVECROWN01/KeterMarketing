@@ -15,7 +15,7 @@ const services = [
 ]
 
 const company = [
-  { title: 'Notre Process', href: '/webdesign' },
+  { title: 'Notre Process', href: '/#process' },
   { title: 'Portfolio', href: '/our-work' },
   { title: 'Contactez-nous', href: '/contact-us' },
   { title: 'Carrières', href: '/careers' },
@@ -24,7 +24,7 @@ const company = [
 const socialLinks = [
   {
     icon: <InstagramIcon className="size-4" />,
-    link: 'https://www.instagram.com/',
+    link: 'https://www.instagram.com/ketermarketing/',
     label: 'Instagram',
     hoverColor: 'hover:text-[#E4405F] hover:border-[#E4405F]/40',
   },
@@ -36,7 +36,7 @@ const socialLinks = [
   },
   {
     icon: <FacebookIcon className="size-4" />,
-    link: 'https://www.facebook.com/',
+    link: 'https://www.facebook.com/ketermarketing/',
     label: 'Facebook',
     hoverColor: 'hover:text-[#1877F2] hover:border-[#1877F2]/40',
   },

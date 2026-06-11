@@ -13,11 +13,12 @@ const clients = [
 
 export default function MarqueeSection() {
   return (
-    <section className="bg-[#111111] border-y border-white/5 overflow-hidden py-4">
+    <section className="bg-[#111111] border-y border-white/5 overflow-hidden py-4" aria-label="Clients de confiance">
       <div className="flex overflow-hidden">
         {/* Double the list inside one div for seamless loop */}
         <div
           className="animate-marquee flex whitespace-nowrap shrink-0 min-w-full"
+          aria-hidden="true"
         >
           {[...clients, ...clients].map((client, i) => (
             <span key={i} className="inline-flex items-center gap-3 px-8">

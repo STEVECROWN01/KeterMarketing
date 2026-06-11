@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { ArrowRight, CheckCircle2, Loader2, MapPin, Mail, Phone } from 'lucide-react'
-import { WHATSAPP_BOOKING_URL, WHATSAPP_CONTACT_URL } from '@/lib/constants'
+import { WHATSAPP_BOOKING_URL, WHATSAPP_CONTACT_URL, PHONE_NUMBER, EMAIL_CONTACT } from '@/lib/constants'
 
 interface FormData {
   fullName: string
@@ -109,13 +109,13 @@ export default function ContactFormSection() {
                   <div>
                     <p className="text-white/40 text-xs uppercase tracking-wider">WhatsApp</p>
                     <p className="text-white text-sm font-medium group-hover:text-[#D4AF37] transition-colors">
-                      +229 01 41 36 08 03
+                      {PHONE_NUMBER}
                     </p>
                   </div>
                 </a>
 
                 <a
-                  href="mailto:contact@ketermarketing.com"
+                  href={`mailto:${EMAIL_CONTACT}`}
                   className="flex items-center gap-4 group"
                 >
                   <div className="w-11 h-11 rounded-full bg-[#D4AF37]/10 flex items-center justify-center group-hover:bg-[#D4AF37]/20 transition-colors">
@@ -124,7 +124,7 @@ export default function ContactFormSection() {
                   <div>
                     <p className="text-white/40 text-xs uppercase tracking-wider">Email</p>
                     <p className="text-white text-sm font-medium group-hover:text-[#D4AF37] transition-colors">
-                      contact@ketermarketing.com
+                      {EMAIL_CONTACT}
                     </p>
                   </div>
                 </a>
@@ -189,6 +189,7 @@ export default function ContactFormSection() {
                         name="fullName"
                         placeholder="John Doe"
                         required
+                        maxLength={100}
                         value={formData.fullName}
                         onChange={handleChange}
                         className="bg-white/[0.06] border-white/[0.12] text-white placeholder:text-white/30 focus-visible:border-[#D4AF37]/60 focus-visible:ring-[#D4AF37]/20 h-12 rounded-lg text-sm"
@@ -202,8 +203,9 @@ export default function ContactFormSection() {
                         id="phone"
                         name="phone"
                         type="tel"
-                        placeholder="+229 01 41 36 08 03"
+                        placeholder={PHONE_NUMBER}
                         required
+                        maxLength={30}
                         value={formData.phone}
                         onChange={handleChange}
                         className="bg-white/[0.06] border-white/[0.12] text-white placeholder:text-white/30 focus-visible:border-[#D4AF37]/60 focus-visible:ring-[#D4AF37]/20 h-12 rounded-lg text-sm"
@@ -223,6 +225,7 @@ export default function ContactFormSection() {
                         type="email"
                         placeholder="email@entreprise.com"
                         required
+                        maxLength={200}
                         value={formData.email}
                         onChange={handleChange}
                         className="bg-white/[0.06] border-white/[0.12] text-white placeholder:text-white/30 focus-visible:border-[#D4AF37]/60 focus-visible:ring-[#D4AF37]/20 h-12 rounded-lg text-sm"
@@ -237,6 +240,7 @@ export default function ContactFormSection() {
                         name="company"
                         placeholder="Nom de l'entreprise"
                         required
+                        maxLength={100}
                         value={formData.company}
                         onChange={handleChange}
                         className="bg-white/[0.06] border-white/[0.12] text-white placeholder:text-white/30 focus-visible:border-[#D4AF37]/60 focus-visible:ring-[#D4AF37]/20 h-12 rounded-lg text-sm"
@@ -298,6 +302,7 @@ export default function ContactFormSection() {
                       name="message"
                       placeholder="Décrivez votre projet ou votre demande..."
                       required
+                      maxLength={5000}
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}

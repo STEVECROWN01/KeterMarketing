@@ -6,7 +6,7 @@ import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
 import Link from 'next/link'
 import { ArrowRight, Mail, Clock, MessageSquare, Phone } from 'lucide-react'
-import { WHATSAPP_CONTACT_URL } from '@/lib/constants'
+import { WHATSAPP_CONTACT_URL, PHONE_NUMBER, EMAIL_SUPPORT } from '@/lib/constants'
 
 export default function ContactUsPage() {
   return (
@@ -54,11 +54,11 @@ export default function ContactUsPage() {
                 </p>
                 <div className="space-y-2">
                   <a
-                    href="mailto:support@ketermarketing.com"
+                    href={`mailto:${EMAIL_SUPPORT}`}
                     className="flex items-center gap-2 text-[#D4AF37] text-sm hover:underline"
                   >
                     <Mail className="w-3.5 h-3.5" />
-                    support@ketermarketing.com
+                    {EMAIL_SUPPORT}
                   </a>
                   <a
                     href={WHATSAPP_CONTACT_URL}
@@ -67,7 +67,7 @@ export default function ContactUsPage() {
                     className="flex items-center gap-2 text-white/40 text-sm hover:text-[#25D366] transition-colors"
                   >
                     <Phone className="w-3.5 h-3.5" />
-                    +229 01 41 36 08 03
+                    {PHONE_NUMBER}
                   </a>
                 </div>
               </AnimatedSection>
@@ -135,6 +135,7 @@ export default function ContactUsPage() {
                   scrolling="no"
                   id="contact-form-iframe"
                   title="Formulaire de contact Keter Marketing"
+                  sandbox="allow-scripts allow-forms allow-same-origin"
                 />
               </div>
             </div>

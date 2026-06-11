@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useRef, useEffect, useCallback } from "react"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -15,6 +15,7 @@ interface ImageCard {
 
 interface ImageCarouselHeroProps {
   title: React.ReactNode
+  subtitle?: string
   description: React.ReactNode
   ctaText: string
   ctaSecondaryText?: string
@@ -32,6 +33,7 @@ interface ImageCarouselHeroProps {
 
 export function ImageCarouselHero({
   title,
+  subtitle,
   description,
   ctaText,
   ctaSecondaryText,
@@ -42,28 +44,44 @@ export function ImageCarouselHero({
   ratingBadge,
   microCopy,
 }: ImageCarouselHeroProps) {
-  const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 })
-  const [isHovering, setIsHovering] = useState(false)
-  const [rotatingCards, setRotatingCards] = useState<number[]>(() =>
+  const [mousePosition, setMousePosition] = React.useState({ x: 0.5, y: 0.5 })
+  const [isHovering, setIsHovering] = React.useState(false)
+  const angleRef = useRef(0)
+  const [rotatingCards, setRotatingCards] = React.useState<number[]>(() =>
     images.map((_, i) => i * (360 / images.length))
   )
+  const rafRef = useRef<number | null>(null)
 
-  // Continuous rotation animation
+  // Continuous rotation animation using requestAnimationFrame (no re-renders per frame)
   useEffect(() => {
-    const interval = setInterval(() => {
-      setRotatingCards((prev) => prev.map((val) => (val + 0.4) % 360))
-    }, 50)
+    let lastTime = performance.now()
 
-    return () => clearInterval(interval)
-  }, [])
+    const animate = (now: number) => {
+      const delta = now - lastTime
+      // 0.4 degrees per 50ms → 8 degrees per second
+      const increment = (delta / 50) * 0.4
+      lastTime = now
+      angleRef.current = (angleRef.current + increment) % 360
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      setRotatingCards((prev) =>
+        prev.map((_, i) => (angleRef.current + i * (360 / images.length)) % 360)
+      )
+      rafRef.current = requestAnimationFrame(animate)
+    }
+
+    rafRef.current = requestAnimationFrame(animate)
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
+  }, [images.length])
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
     setMousePosition({
       x: (e.clientX - rect.left) / rect.width,
       y: (e.clientY - rect.top) / rect.height,
     })
-  }
+  }, [])
 
   return (
     <section
@@ -96,21 +114,17 @@ export function ImageCarouselHero({
             {images.map((image, index) => {
               const angle = (rotatingCards[index] || 0) * (Math.PI / 180)
               
-              // Responsive radius based on viewport width
-              // On desktop/large tablet, radius is 260px. On smaller screens, radius shrinks dynamically to prevent horizontal overflow.
               const radius = 260
               
               const x = Math.cos(angle) * radius
-              const y = Math.sin(angle) * radius * 0.4 // Flatten for horizontal ellipse
+              const y = Math.sin(angle) * radius * 0.4
 
-              // 3D perspective effect based on mouse position
               const perspectiveX = isHovering ? (mousePosition.x - 0.5) * 20 : 0
               const perspectiveY = isHovering ? (mousePosition.y - 0.5) * 20 : 0
 
-              // Depth-based scale & opacity for parallax
               const depth = Math.sin(angle)
-              const scale = 0.75 + (depth + 1) * 0.15 // 0.75 to 1.05
-              const opacity = 0.5 + (depth + 1) * 0.25 // 0.5 to 1.0
+              const scale = 0.75 + (depth + 1) * 0.15
+              const opacity = 0.5 + (depth + 1) * 0.25
               const zIndex = Math.round((depth + 1) * 10)
 
               return (
@@ -166,6 +180,11 @@ export function ImageCarouselHero({
 
         {/* Content Section */}
         <div className="relative z-20 text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          {subtitle && (
+            <span className="inline-block text-[#D4AF37] text-sm font-semibold uppercase tracking-[0.15em] mb-3">
+              {subtitle}
+            </span>
+          )}
           <h1 className="text-[36px] sm:text-[44px] md:text-[56px] lg:text-[64px] font-bold leading-[1.08] tracking-tight mb-6">
             {title}
           </h1>

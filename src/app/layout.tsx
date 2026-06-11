@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
+import { SITE_URL } from "@/lib/constants";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,6 +18,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Keter Marketing — Sites Web Stratégiques qui Convertissent | Cotonou",
   description:
     "Keter Marketing conçoit des sites web qui génèrent des clients. Copywriting, design et développement sur mesure pour PME, agences et infopreneurs. Appel gratuit →",
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     title: "Keter Marketing — Sites Web Stratégiques",
     description:
       "Des sites web qui génèrent de vrais clients. Copywriting intégré. Résultats mesurables.",
-    url: "https://ketermarketing.com",
+    url: SITE_URL,
     siteName: "Keter Marketing",
     type: "website",
     locale: "fr_BJ",
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: "https://ketermarketing.com",
+    canonical: SITE_URL,
   },
   twitter: {
     card: "summary_large_image",
@@ -76,7 +77,6 @@ export default function RootLayout({
         <div id="main-content">
           {children}
         </div>
-        <Toaster />
       </body>
     </html>
   );
