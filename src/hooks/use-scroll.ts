@@ -1,19 +1,16 @@
 'use client';
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useSyncExternalStore } from 'react';
 
 export function useScroll(threshold: number) {
-  const [scrolled, setScrolled] = useState(false);
+  const subscribe = useCallback((callback: () => void) => {
+    window.addEventListener('scroll', callback, { passive: true });
+    return () => window.removeEventListener('scroll', callback);
+  }, []);
 
-  const onScroll = useCallback(() => {
-    setScrolled(window.scrollY > threshold);
-  }, [threshold]);
+  const getSnapshot = useCallback(() => window.scrollY > threshold, [threshold]);
+  const getServerSnapshot = useCallback(() => false, []);
 
-  useEffect(() => {
-    // Set initial state on the client to avoid hydration mismatch
-    setScrolled(window.scrollY > threshold);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [onScroll, threshold]);
+  const scrolled = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   return scrolled;
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useSyncExternalStore } from 'react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
@@ -38,13 +38,16 @@ const sections = [
   },
 ]
 
-export default function PrivacyPolicyPage() {
-  const [dateStr, setDateStr] = useState('')
+function useFormattedDate() {
+  const subscribe = () => () => {}
+  const getSnapshot = () =>
+    new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
+  const getServerSnapshot = () => ''
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
+}
 
-  useEffect(() => {
-    const formatted = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })
-    setDateStr(formatted)
-  }, [])
+export default function PrivacyPolicyPage() {
+  const dateStr = useFormattedDate()
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0B0B0B]">

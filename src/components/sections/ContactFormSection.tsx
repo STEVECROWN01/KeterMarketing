@@ -324,7 +324,7 @@ export default function ContactFormSection() {
                     <p className="text-red-400 text-sm">
                       {serverError}
                     </p>
-                  )
+                  )}
 
                   {/* Submit Button */}
                   <Button
