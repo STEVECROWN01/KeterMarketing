@@ -5,7 +5,7 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFAB from '@/components/layout/WhatsAppFAB'
 import AnimatedSection from '@/components/sections/AnimatedSection'
-import { PHONE_NUMBER, EMAIL_CONTACT } from '@/lib/constants'
+import { PHONE_NUMBER, EMAIL_CONTACT, SITE_URL } from '@/lib/constants'
 
 const sections = [
   {
@@ -72,7 +72,7 @@ export default function PrivacyPolicyPage() {
 
             <AnimatedSection>
               <p className="text-white/55 leading-relaxed mb-10 text-base">
-                Chez <strong className="text-white">Keter Marketing</strong>, la protection de vos données personnelles est une priorité. Cette politique de confidentialité vous informe sur la manière dont nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site web <strong className="text-[#D4AF37]">ketermarketing.com</strong>.
+                Chez <strong className="text-white">Keter Marketing</strong>, la protection de vos données personnelles est une priorité. Cette politique de confidentialité vous informe sur la manière dont nous collectons, utilisons et protégeons vos informations lorsque vous utilisez notre site web <strong className="text-[#D4AF37]">{SITE_URL.replace('https://', '')}</strong>.
               </p>
             </AnimatedSection>
 

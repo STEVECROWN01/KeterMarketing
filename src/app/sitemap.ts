@@ -1,10 +1,12 @@
 import type { MetadataRoute } from 'next'
 import { SITE_URL } from '@/lib/constants'
+import { projects } from '@/lib/data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_URL
 
-  return [
+  // Static pages
+  const staticPages: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -36,30 +38,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/our-work/win-agro-tech`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/our-work/academia-helm`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/our-work/afribayit`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/our-work/foncier-facile-afrique`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
       url: `${baseUrl}/request-a-quote`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -84,4 +62,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
   ]
+
+  // Dynamic portfolio pages — generated from data so new projects are included automatically
+  const portfolioPages: MetadataRoute.Sitemap = Object.keys(projects).map((slug) => ({
+    url: `${baseUrl}/our-work/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  return [...staticPages, ...portfolioPages]
 }

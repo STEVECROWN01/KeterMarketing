@@ -38,6 +38,7 @@ export default function ContactFormSection() {
   })
   const [status, setStatus] = useState<FormStatus>('idle')
   const [referralError, setReferralError] = useState('')
+  const [serverError, setServerError] = useState('')
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -62,11 +63,19 @@ export default function ContactFormSection() {
         body: JSON.stringify(formData),
       })
 
-      if (!res.ok) throw new Error('Erreur réseau')
+      const data = await res.json()
 
+      if (!res.ok) {
+        setServerError(data.error || 'Une erreur est survenue. Veuillez réessayer.')
+        setStatus('error')
+        return
+      }
+
+      setServerError('')
       setStatus('success')
       setFormData({ fullName: '', phone: '', email: '', company: '', referral: '', message: '' })
     } catch {
+      setServerError('Erreur réseau. Vérifiez votre connexion et réessayez.')
       setStatus('error')
     }
   }
@@ -311,11 +320,11 @@ export default function ContactFormSection() {
                   </div>
 
                   {/* Error message */}
-                  {status === 'error' && (
+                  {status === 'error' && serverError && (
                     <p className="text-red-400 text-sm">
-                      Une erreur est survenue. Veuillez réessayer ou nous contacter via WhatsApp.
+                      {serverError}
                     </p>
-                  )}
+                  )
 
                   {/* Submit Button */}
                   <Button
